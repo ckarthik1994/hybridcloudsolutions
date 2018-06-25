@@ -27,8 +27,3 @@ entries:
               - title: NetApp PetaGene Whitepaper
                 url: /NetApp_PetaGene_Whitepaper.html
       - title: Machine Learning
-
-  - title: Applicatons
-    entries:
-      - title: Business Applications
-      - title: Enterprise Applications

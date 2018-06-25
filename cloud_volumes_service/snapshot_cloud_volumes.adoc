@@ -14,24 +14,24 @@ summary: NetApp Cloud Volumes, Not Your Mothers File Service.
 :imagesdir: ./media/
 
 [discrete]
-==== Durability, Availability,Encryption and Snapshots
+==== Durability, Availability, Encryption and Snapshots
 [discrete]
 ===== Authors: Chad Morgenstern, Karthik Chinnathambi
 
-If you are thinking about your data in the clouds, consider that NetApp's Cloud Volumes Service is about more than just NFS or SMB.  With the Cloud Volumes Service, you can rest assured that your data is durable, encrypted, and highly available.  But what about protection from user errors, wouldn't you love the ability to roll back time to undo choices you may have made and wish you hadn't?  Yeah, we got you covered there too with NetApp Cloud Volume Service's Snapshot capability.
+If you are thinking about your data in the clouds, consider that NetApp Cloud Volumes Service is about more than just NFS or SMB.  With the Cloud Volumes Service, you can rest assured that your data is durable, encrypted, and highly available.  But what about protection from user errors, wouldn't you love the ability to roll back time to undo choices you may have made and wish you hadn't?  Yeah, we got you covered there too with NetApp Cloud Volume Service's Snapshot capability.
 [discrete]
 == Durability
 Your data is protected not just against multiple drive failures, but against numerous type of disk errors that could otherwise affect not just your data durability but your data integrity as well.  No more worries that your data is going to disappear.
 
 [discrete]
 == Encryption
-Regarding encryption, NetApp's Cloud Volume service utilizes Storage Encryption to provide full-disk encryption without compromising storage application performance.  This single-source solution can increase overall compliance with industry and government regulations without compromising your user experience.
+Regarding encryption, NetApp Cloud Volume service utilizes Storage Encryption to provide full-disk encryption without compromising storage application performance.  This single-source solution can increase overall compliance with industry and government regulations without compromising your user experience.
 
 [discrete]
 == Availability
 The Cloud Volumes Service is built upon best of industry, proven rock-solid enterprise class hardware and software all but ensuring uptime – availability.  Each storage node has many paths to its own Solid State Drives protecting against path failure as well as access to a partner storage node SSDs as well.  As each storage node has access to its partners disks, continued productivity in the event of controller failure is ensured.  You are protected against network failures by redundant network ports and paths all the way up the stack across the cloud connections.
 
-As NetApp's Cloud Volume Service for AWS sits centrally in relation to each of the availability zones within an AWS region, the service is immune to availability zone outages.  Access your data from any availability zone without the need to replicate content – the user experience from AZ to AZ is expected to be the same and if not, well, its outside of our control – clouds will be clouds after all.
+As NetApp Cloud Volume Service for AWS sits centrally in relation to each of the availability zones within an AWS region, the service is immune to availability zone outages.  Access your data from any availability zone without the need to replicate content – the user experience from AZ to AZ is expected to be the same and if not, well, its outside of our control – clouds will be clouds after all.
 
 [discrete]
 == The Undo Button

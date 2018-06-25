@@ -18,7 +18,7 @@ Hybrid Cloud Solutions focuses on driving revenue by completing and enabling wor
 [discrete]
 == Top Links
 * link:genomics/NetApp_PetaGene_Whitepaper.html[NetApp And PetaGene: Accelerating the Genomics Revolution]
-* link:cloud_volumes_service/snapshot_cloud_volumes.html[Durability, Availability,Encryption and Snapshots on Cloud Volumes Service]
+* link:cloud_volumes_service/snapshot_cloud_volumes.html[Durability, Availability, Encryption and Snapshots on Cloud Volumes Service]
 * link:cloud_volumes_ontap/networking_cloud_volumes_ontap.html[NetApp Cloud Volumes ONTAP And Enhanced Networking Support]
 * link:NPS/gdpr_and_hybrid_cloud.html[GDPR and Hybrid Cloud: A More Perfect Union]
 

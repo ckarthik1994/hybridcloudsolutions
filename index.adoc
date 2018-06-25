@@ -13,7 +13,7 @@ summary: Welcome to the documentation portal for Hybrid Cloud Solutions.
 :keywords: Hybrid Cloud Solutions, Genomics, documentation, help
 
 [.lead]
-The Hybrid Cloud Solutions page takes a solutions level approach to enabling customers on their cloud journey. 
+The Hybrid Cloud Solutions page takes a solutions level approach to enabling customers on their cloud journey​.
 
 [discrete]
 == Top Links

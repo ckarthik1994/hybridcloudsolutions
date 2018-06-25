@@ -21,7 +21,6 @@ By leveraging a hybrid cloud solution, organizations mitigate compliance risks a
 
 1.  *On-Prem All Flash FAS (AFF) and Cloud Volumes Service*
 A NetApp AFF A800 cluster delivers ultra-low latency of below 200 microsecond and massive throughput of up to 300 GB/s powered by a combination of NVMe SSDs and NVMe/FC connectivity. In addition to being able to run your apps with unprecedented speed and scale you can maintain full control of the data on-prem.
-
 NetApp Cloud Volumes offers customers a fully-managed, cloud-native file storage service that integrates with on-prem AFF system via NetApp CloudSync. This means you can offload less secure data into the cloud seamlessly. Furthermore, if you have archival regulation requiring long term retention, you may choose to move content to an even lower, long-term storage tier reducing cost and maintaining even the most stringent record-keeping requirements.
 
 2. *NetApp Private Storage (NPS) for Cloud*

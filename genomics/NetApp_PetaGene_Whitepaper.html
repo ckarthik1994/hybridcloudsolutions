@@ -374,22 +374,6 @@
     </li>
   
 
-  
-    <!-- Check Container -->
-    <li class="subfolders">
-      <a href="#">Applicatons</a>
-      <ul>
-        
-
-  
-
-  
-
-
-      </ul>
-    </li>
-  
-
 
 </ul>
 
@@ -441,13 +425,13 @@
 <p><strong><span class="underline">Increase in Research Collaboration</span></strong> --- Having smaller files to manage makes it easier and faster to share genomic files between labs and research facilities across campus --- or even around the globe.</p>
 </li>
 <li>
-<p><strong><span class="underline">Cloud Enablement (AWS, Google, Azure, and more)</span></strong> --- NetApp and PetaGene provide multiple options for managing genomic data in cloud environments like AWS, Google, and others. Genomic files can be seamlessly and securely moved to and from the cloud to support a variety of cloud-based workflows. Further, cold data can be tiered to object storage using Fabric Pools, freeing performance tiers for new sequencing projects.</p>
+<p><strong><span class="underline">Cloud Enablement (AWS, Google, Azure, and more)</span></strong> --- NetApp and PetaGene provide multiple options for managing genomic data in cloud environments like AWS, Google, and others. Genomic files can be seamlessly and securely moved to and from the cloud to support a variety of cloud-based workflows. Further, cold data can be tiered to object storage using FabricPool, freeing performance tiers for new sequencing projects.</p>
 </li>
 <li>
 <p><strong><span class="underline">Interoperability of Files without Decompression</span></strong> --- Another benefit is that PetaSuite allows researchers to retain interoperability of existing workflows and formats. Specifically, PetaSuite software allows researchers and clinicians to continue using FASTQ and BAM file representations in their existing tools and pipelines, without needing to decompress first.</p>
 </li>
 <li>
-<p><strong><span class="underline">Reduce Operational Costs via Data Fabric - Life Cycle Management</span></strong> --- PetaGene’s software also helps to decrease research operations costs as it literally shrinks the amount of data which needs to be managed at different stages of its life cycle. Not only do the smaller genomic files enable more efficient data transfers, but they also accelerate data tiering. For example, some research data may need to be archived for short-term (or long-term) access by genomic researchers. Decreasing the size of the files via PetaSuite, PetaGene’s compression software, can save costs and time --- no matter if the data is in a cloud or on-premise. NetApp’s Data Fabric model allows researchers to seamlessly migrate genomic data --- where it’s needed --- when it’s needed locally or globally.</p>
+<p><strong><span class="underline">Reduce Operational Costs via Data Fabric - Life Cycle Management</span></strong> --- PetaGene’s software also helps to decrease research operations costs as it literally shrinks the amount of data which needs to be managed at different stages of its life cycle. Not only do the smaller genomic files enable more efficient data transfers, but they also accelerate data tiering. For example, some research data may need to be archived for short-term (or long-term) access by genomic researchers. Decreasing the size of the files via PetaSuite, PetaGene’s compression software, can save costs and time --- no matter if the data is in a cloud or on-premise. The NetApp Data Fabric model allows researchers to seamlessly migrate genomic data --- where it’s needed --- when it’s needed locally or globally.</p>
 </li>
 </ul>
 </div>
@@ -463,7 +447,7 @@
 </div>
 <h1 id="amplify-storage-efficiency" class="sect0">Amplify Storage Efficiency</h1>
 <div class="paragraph">
-<p>PetaGene’s software addresses the challenges caused by growing volumes of genomics data. PetaSuite is a set of scalable complementary software tools that significantly reduce the size and cost of NGS data for storage and transfer. It achieves up to 5x reduction <em>(as per NetApp’s testing)</em> in both storage costs and data transfer times compared to BAM and gzipped FASTQ files. PetaSuite transparently integrates with existing storage infrastructure and bioinformatics pipelines, while PetaLink provides a powerful virtual file access system. PetaLink produces a high performance virtual file view of the compressed file. This virtual file can then be transparently used just like the original file by Linux toolchains, pipelines and genome browsers.</p>
+<p>PetaGene’s software addresses the challenges caused by growing volumes of genomics data. PetaSuite is a set of scalable complementary software tools that significantly reduce the size and cost of NGS data for storage and transfer. It achieves up to 5x reduction <em>(as per NetApp testing)</em> in both storage costs and data transfer times compared to BAM and gzipped FASTQ files. PetaSuite transparently integrates with existing storage infrastructure and bioinformatics pipelines, while PetaLink provides a powerful virtual file access system. PetaLink produces a high performance virtual file view of the compressed file. This virtual file can then be transparently used just like the original file by Linux toolchains, pipelines and genome browsers.</p>
 </div>
 <div class="sect2">
 <h3 id="observed-compression-ratios">Observed Compression Ratios</h3>
@@ -517,7 +501,7 @@
 <p>With the BAM and FASTQ files in place, PetaSuite compresses the files converting to BAM to CRAM and FASTQ to FasterQ formats respectively. The space savings discussed above are realized at this stage.</p>
 </li>
 <li>
-<p>The aforementioned compressed files are transferred from the secondary site to either volumes within the NetApp Cloud Volumes Service, a NetApp Cloud Volumes ONTAP Cluster or a NetApp Private Storage (NPS) Cluster. The transfer mechanism is dependent upon the target – CloudSync if NetApp Cloud Volumes Service or SnapMirror if NetApp’s Cloud Volumes ONTAP or NPS.</p>
+<p>The aforementioned compressed files are transferred from the secondary site to either volumes within the NetApp Cloud Volumes Service, a NetApp Cloud Volumes ONTAP Cluster or a NetApp Private Storage (NPS) Cluster. The transfer mechanism is dependent upon the target – CloudSync if NetApp Cloud Volumes Service or SnapMirror if NetApp Cloud Volumes ONTAP or NPS.</p>
 </li>
 <li>
 <p>All post-processing activity is performed in one of the various hyperscaler environments and all file interactions occur against the NetApp storage target.</p>
@@ -551,7 +535,7 @@
 <h2 id="control-protection-and-efficiency-with-cloud-volumes-ontap">Control, Protection and Efficiency with Cloud Volumes ONTAP</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>NetApp Cloud Volumes ONTAP delivers enterprise control, protection, and efficiency to your data with the flexibility of the cloud. Cloud Volumes ONTAP, a software-defined data management service built on NetApp’s ONTAP 9 storage operating system, provides a superior universal storage platform that addresses most cloud data needs. Having the same storage operating system in the cloud and on premises delivers the value of a Data Fabric without having to train IT staff in all-new methods to manage data. The SnapMirror features of ONTAP offer a bandwidth efficient data replication and transfer mechanism between clouds and to or from a datacenter.</p>
+<p>NetApp Cloud Volumes ONTAP delivers enterprise control, protection, and efficiency to your data with the flexibility of the cloud. Cloud Volumes ONTAP, a software-defined data management service built on the NetApp ONTAP 9 storage operating system, provides a superior universal storage platform that addresses most cloud data needs. Having the same storage operating system in the cloud and on premises delivers the value of a Data Fabric without having to train IT staff in all-new methods to manage data. The SnapMirror features of ONTAP offer a bandwidth efficient data replication and transfer mechanism between clouds and to or from a datacenter.</p>
 </div>
 <div class="paragraph">
 <p>Cloud Volumes ONTAP provides a data storage solution that fits many different customer requirements –from disaster recovery, development, and test environments to critical applications that require highly available non-disruptive operation, such as production business applications and file services using NFS, SMB, and iSCSI. Setup and management of the Cloud Volumes ONTAP environment is simple and intuitive with NetApp OnCommand Cloud Manager web interface.</p>

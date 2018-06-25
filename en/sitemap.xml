@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  
+    
+    
+  
+
+  
+  
+    <url>
+      <loc>https://docs.netapp.com/hybridcloudsolutions/en/NPS/gdpr_and_hybrid_cloud.html</loc>
+      
+        <lastmod>2018-06-25T16:09:01+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/hybridcloudsolutions/en/genomics/NetApp_PetaGene_Whitepaper.html</loc>
+      
+        <lastmod>2018-06-25T16:09:01+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/hybridcloudsolutions/en/</loc>
+      
+        <lastmod>2018-06-25T16:09:01+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/hybridcloudsolutions/en/cloud_volumes_ontap/networking_cloud_volumes_ontap.html</loc>
+      
+        <lastmod>2018-06-25T16:09:01+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/hybridcloudsolutions/en/search.html</loc>
+      
+        <lastmod>2018-06-25T16:33:51+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/hybridcloudsolutions/en/cloud_volumes_service/snapshot_cloud_volumes.html</loc>
+      
+        <lastmod>2018-06-25T16:09:01+00:00</lastmod>
+      
+    </url>
+  
+
+  
+  
+</urlset>

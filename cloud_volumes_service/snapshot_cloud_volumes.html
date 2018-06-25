@@ -1,0 +1,556 @@
+
+<!DOCTYPE html>
+<!--[if IE 9]>         <html class="ie9"> <![endif]-->
+<!--[if gt IE 9]><!--> <html>         <!--<![endif]-->
+  <head>
+  <title>NetApp Cloud Volumes, Not Your Mothers File Service | NetApp Cloud Docs</title>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="format-detection" content="telephone=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge,chrome=1">
+  <meta http-equiv="encoding" content="utf-8">
+  <meta http-equiv="nss-type" content="Product Documentation">
+  <meta http-equiv="nss-subtype" content="User Guide">
+
+  
+
+  <meta name="description" content="NetApp Cloud Volumes, Not Your Mothers File Service.">
+  <meta name="keywords" content=" Cloud Volumes Service, Durability, Availability, Snapshots">
+
+  <!-- Icons -->
+  <link rel="icon" href="/hybridcloudsolutions/images/favicon.ico" type="image/x-icon">
+
+  <!-- CSS Definitions: NetApp CSS should be defined after generic css -->
+
+  <!-- Elastic Search -->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/searchkit/0.10.0/theme.css">
+
+  <!-- LUCI CSS Content -->
+  <link rel="stylesheet" href="//luci.netapp.com/archives/3_3_2/bower_components/eightshapes-blocks/dist/esb.min.css">
+  <link rel="stylesheet" href="//luci.netapp.com/archives/3_3_2/netapp-library/css/netapp-library.min.css">
+  <link rel="stylesheet" href="//luci.netapp.com/archives/3_3_2/css/doc.css">
+  <link rel="stylesheet" href="//luci.netapp.com/archives/3_3_2/css/doc-components.css">
+
+  <link rel="stylesheet" href='/hybridcloudsolutions/css/na-sidebar.css' type='text/css'>
+  <link rel='stylesheet' href='/hybridcloudsolutions/css/na-search.css' type='text/css'>
+  <link rel='stylesheet' href='/hybridcloudsolutions/css/clouddocs.css' type='text/css'>
+
+  <!-- Font awesome seems to affect our GitHub Icon and generic "arrow box" for external links. -->
+  <link rel="stylesheet" type="text/css" href="/hybridcloudsolutions/css/font-awesome.min.css">
+  <!-- <link rel="stylesheet" href="/hybridcloudsolutions/css/customstyles.css"> -->
+  <!-- Controls the shadow effect for search dropdown menu -->
+  <link rel="stylesheet" href="/hybridcloudsolutions/css/boxshadowproperties.css">
+
+  <!-- NetApp CSS controls the technical content -->
+  <link rel='stylesheet' href='/hybridcloudsolutions/css/netapp.css' type='text/css'>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+  <!-- Used to import Promise for IE. Required for SearchKit -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.3.5/bluebird.min.js"></script>
+  
+    <script src='/hybridcloudsolutions/js/na-search.js'></script>
+  
+
+  <script src='/hybridcloudsolutions/js/clouddocs.js'></script>
+  <script src='/hybridcloudsolutions/js/s_code_impl.js'></script>
+  <script src="/hybridcloudsolutions/js/jquery.navgoco.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/2.0.0/anchor.min.js"></script>
+  <script src="/hybridcloudsolutions/js/toc.js"></script>
+  <script src="/hybridcloudsolutions/js/customscripts.js"></script>
+
+  <script>
+      $(document).ready(function() {
+          // Initialize navgoco with default options
+          $("#mysidebar").navgoco({
+              caretHtml: '',
+              accordion: true,
+              openClass: 'active', // open
+              save: false, // leave false or nav highlighting doesn't work right
+              cookie: {
+                  name: 'navgoco',
+                  expires: false,
+                  path: '/'
+              },
+              slide: {
+                  duration: 400,
+                  easing: 'swing'
+              }
+          });
+
+          $("#collapseAll").click(function(e) {
+              e.preventDefault();
+              $("#mysidebar").navgoco('toggle', false);
+          });
+
+          $("#expandAll").click(function(e) {
+              e.preventDefault();
+              $("#mysidebar").navgoco('toggle', true);
+          });
+
+      });
+
+  </script>
+  <script>
+      $(function () {
+          $('[data-toggle="tooltip"]').tooltip()
+      })
+  </script>
+  <script>
+      $(document).ready(function() {
+          $("#tg-sb-link").click(function() {
+              $("#tg-sb-sidebar").toggle();
+              $("#tg-sb-content").toggleClass('col-md-9');
+              $("#tg-sb-content").toggleClass('col-md-12');
+              $("#tg-sb-icon").toggleClass('fa-toggle-on');
+              $("#tg-sb-icon").toggleClass('fa-toggle-off');
+          });
+      });
+  </script>
+
+  <!-- Controls the i18n Browser Redirection -->
+  <script>
+    var siteLocales = [];
+    
+      siteLocales.push("zz");
+    
+      siteLocales.push("en");
+    
+      siteLocales.push("us-en");
+    
+
+    standardizeUrl(siteLocales, "clouddocs.netapp.com", "https://docs.netapp.com");
+  </script>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-81697994-3"></script>
+  <script>
+  if (document.location.hostname === "docs.netapp.com") {
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-81697994-3');
+  }
+  </script>
+</head>
+
+
+  <body class="n-doc__component-detail">
+    <a href="#n-main-content" class="visually-hidden">Skip to main content</a>
+<div class="n-off-canvas-menu">
+  <div class="n-off-canvas-menu__menu">
+    <div class="n-off-canvas-menu__menu-inner">
+      <div class="n-off-canvas-menu__property-title">NetApp Cloud Docs</div>
+      <ul class="n-off-canvas-menu__property-navigation-list">
+        <li class="n-off-canvas-menu__property-navigation-list-item ">
+          <a href="https://docs.netapp.com/zz/" class="n-off-canvas-menu__property-navigation-link">
+            Home
+          </a>
+          <div class="n-off-canvas-menu__child-menu">
+            <ul class="n-menu__list">
+
+            </ul>
+          </div>
+        </li>
+      </ul>
+
+      <ul class="n-off-canvas-menu__global-navigation-list">
+         <li class="n-off-canvas-menu__global-navigation-list-header">More From NetApp</li>
+         <li class="n-off-canvas-menu__global-navigation-list-item"><a href="#" class="n-off-canvas-menu__global-navigation-link">Netapp.com</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+    <div class="n-off-canvas-menu__content-wrap">
+      <!-- Header -->
+      <header>
+  <!-- Top Hat -->
+  <div class="n-top-hat">
+    <div class="n-container">
+      <div class="n-top-hat__cross-property-nav">
+        <ul class="n-top-hat__list">
+            <li class="n-top-hat__list-item">
+              <a href="http://www.netapp.com" class="n-top-hat__link">NetApp.com</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Property Bar -->
+  <div class="n-property-bar n-property-bar--v3">
+    <div class="n-property-bar__inner-wrap">
+      <div class="n-property-bar__menu-toggle">
+        <a href="#" class="n-property-bar__menu-toggle-link"><span class="n-property-bar__menu-toggle-text">Menu</span><svg class="n-icon-bars n-property-bar__menu-toggle-icon" aria-labelledby="title">
+          <title>bars</title>
+          <use xlink:href="/hybridcloudsolutions/common/svg/sprite.svg#bars"></use>
+        </svg></a>
+      </div>
+      <div class="n-property-bar__property-mark n-property-bar__property-mark--has-property-name">
+        <a class="n-property-bar__property-link" href="https://docs.netapp.com/zz/">
+          <div class="n-property-bar__logo">
+            <svg class="n-icon-netapp-mark n-property-bar__netapp-mark-icon" aria-labelledby="title">
+              <title>netapp-mark</title>
+              <use xlink:href="/hybridcloudsolutions/common/svg/sprite.svg#netapp-mark"></use>
+            </svg>
+            <svg viewBox="0 0 1008 181.537" class="n-property-bar__logo-svg" aria-labelledby="title">
+              <title>NetApp</title>
+              <use xlink:href="/hybridcloudsolutions/common/svg/sprite.svg#netapp-logo"></use>
+            </svg>
+          </div>
+          <h2 class="n-property-bar__property-name">Cloud Docs</h2>
+        </a>
+      </div>
+
+      <!-- NetApp Search Bar -->
+      
+      <div id="search-demo-container" class="n-property-bar__search">
+        <div id="react-search"></div>
+      </div>
+      
+
+      <div id="ie-i18n-menu" class="n-property-bar__utils">
+        <ul class="n-property-navigation-bar__utils-list">
+          <li class="n-property-navigation-bar__utils-list-item">
+            <a href="#" class="n-property-navigation-bar__utils-link n-property-navigation-bar__nav-link n-property-navigation-bar__language-selector-toggle" data-menu-id="n-property-navigation-bar__menu--language-selector">
+              <svg class="n-icon-globe n-globe__icon" aria-labelledby="title">
+                <title>globe</title>
+                <use xlink:href="/hybridcloudsolutions/common/svg/sprite.svg#globe"></use>
+              </svg>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <!-- End NetApp Search Bar -->
+    </div>
+
+    <div class="n-property-bar__menus">
+      <div id="n-property-navigation-bar__menu--language-selector" class="n-menu n-menu--v3">
+        <div class="n-language-selector-menu">
+          <div class="n-language-selector-menu__header">
+            <span class="n-language-selector-menu__title">Select Your Language</span>
+          </div>
+          <ul class="n-menu__list">
+            <li class="n-menu__list-column">
+              <ul class="n-menu__list">
+                <li class="n-menu__list-item n-menu__list-item--level-1">
+                  <a href="/hybridcloudsolutions/us-en/" class="n-menu__header-text">English</a>
+                </li>
+                
+              </ul>
+            </li>
+          </ul>
+          <div class="menu__footer">
+            <p>Current Language: zz
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+      <!-- Content -->
+      <main role="main" id="n-main-content" class="n-main-content">
+        <div class="n-container">
+          <div class="n-row">
+            <div class="n-doc n-doc__component-list">
+              <!-- Sidebar Column -->
+              
+              <div class="col-md-3" >
+                  
+
+<ul id="mysidebar" class="nav">
+  
+
+  
+    <li><a href="../index.html">Hybrid Cloud Solutions</a></li>
+  
+
+  
+    <!-- Check Container -->
+    <li class="subfolders">
+      <a href="#">Technology</a>
+      <ul>
+        
+
+  
+    <!-- Check Container -->
+    <li class="subfolders">
+      <a href="#">Cloud Volumes Service</a>
+      <ul>
+        
+
+  
+    <li class="active"><a href="snapshot_cloud_volumes.html">Durability, Availability,Encryption and Snapshots</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+    <!-- Check Container -->
+    <li class="subfolders">
+      <a href="#">Cloud Volumes ONTAP</a>
+      <ul>
+        
+
+  
+    <li><a href="../cloud_volumes_ontap/networking_cloud_volumes_ontap.html">NetApp Cloud Volumes ONTAP And Enhanced Networking Support</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+    <!-- Check Container -->
+    <li class="subfolders">
+      <a href="#">NetApp Private Storage</a>
+      <ul>
+        
+
+  
+    <li><a href="../NPS/gdpr_and_hybrid_cloud.html">GDPR and Hybrid Cloud A More Perfect Union</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+    <!-- Check Container -->
+    <li class="subfolders">
+      <a href="#">Verticals</a>
+      <ul>
+        
+
+  
+
+  
+    <!-- Check Container -->
+    <li class="subfolders">
+      <a href="#">HealthCare</a>
+      <ul>
+        
+
+  
+    <!-- Check Container -->
+    <li class="subfolders">
+      <a href="#">Genomics</a>
+      <ul>
+        
+
+  
+    <li><a href="../genomics/NetApp_PetaGene_Whitepaper.html">NetApp PetaGene Whitepaper</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+    <!-- Check Container -->
+    <li class="subfolders">
+      <a href="#">Applicatons</a>
+      <ul>
+        
+
+  
+
+  
+
+
+      </ul>
+    </li>
+  
+
+
+</ul>
+
+<!-- this highlights the active parent class in the navgoco sidebar. this is critical so that the parent expands when you're viewing a page. This must appear below the sidebar code above. Otherwise, if placed inside customscripts.js, the script runs before the sidebar code runs and the class never gets inserted.-->
+<script>$("li.active").parents('li').toggleClass("active");</script>
+
+              </div>
+              
+
+              <div class="n-doc__component-detail-content n-doc__component-detail-content--show-code">
+                <!-- Begin of page container -->
+                <article class="page-content">
+                  
+
+<div class="n-doc__component-detail-heading-wrap">
+  <h1 class="n-doc__component-detail-heading">NetApp Cloud Volumes, Not Your Mothers File Service
+    <span>
+      
+        <a target="_blank" href="https://github.com/NetAppDocs/hybridcloudsolutions/blob/master/cloud_volumes_service/snapshot_cloud_volumes.adoc" class="btn btn-default githubEditButton" role="button"><i class="fa fa-github fa-lg"></i> Edit on GitHub</a>
+      
+    </span>
+  </h1>
+</div>
+
+<h4 id="durability-availabilityencryption-and-snapshots" class="discrete">Durability, Availability,Encryption and Snapshots</h4>
+<h5 id="authors-chad-morgenstern-karthik-chinnathambi" class="discrete">Authors: Chad Morgenstern, Karthik Chinnathambi</h5>
+<div class="paragraph">
+<p>If you are thinking about your data in the clouds, consider that NetApp&#8217;s Cloud Volumes Service is about more than just NFS or SMB.  With the Cloud Volumes Service, you can rest assured that your data is durable, encrypted, and highly available.  But what about protection from user errors, wouldn&#8217;t you love the ability to roll back time to undo choices you may have made and wish you hadn&#8217;t?  Yeah, we got you covered there too with NetApp Cloud Volume Service&#8217;s Snapshot capability.</p>
+</div>
+<h2 id="durability" class="discrete">Durability</h2>
+<div class="paragraph">
+<p>Your data is protected not just against multiple drive failures, but against numerous type of disk errors that could otherwise affect not just your data durability but your data integrity as well.  No more worries that your data is going to disappear.</p>
+</div>
+<h2 id="encryption" class="discrete">Encryption</h2>
+<div class="paragraph">
+<p>Regarding encryption, NetApp&#8217;s Cloud Volume service utilizes Storage Encryption to provide full-disk encryption without compromising storage application performance.  This single-source solution can increase overall compliance with industry and government regulations without compromising your user experience.</p>
+</div>
+<h2 id="availability" class="discrete">Availability</h2>
+<div class="paragraph">
+<p>The Cloud Volumes Service is built upon best of industry, proven rock-solid enterprise class hardware and software all but ensuring uptime – availability.  Each storage node has many paths to its own Solid State Drives protecting against path failure as well as access to a partner storage node SSDs as well.  As each storage node has access to its partners disks, continued productivity in the event of controller failure is ensured.  You are protected against network failures by redundant network ports and paths all the way up the stack across the cloud connections.</p>
+</div>
+<div class="paragraph">
+<p>As NetApp&#8217;s Cloud Volume Service for AWS sits centrally in relation to each of the availability zones within an AWS region, the service is immune to availability zone outages.  Access your data from any availability zone without the need to replicate content – the user experience from AZ to AZ is expected to be the same and if not, well, its outside of our control – clouds will be clouds after all.</p>
+</div>
+<h2 id="the-undo-button" class="discrete">The Undo Button</h2>
+<div class="paragraph">
+<p>Snapshots act as logical backups and are as such point-in-time representations of your data.  The creation of Snapshots may be scheduled or taken manually both within the Cloud Volumes Portal.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="./media/create_snapshot.png" alt="create snapshot">
+</div>
+</div>
+<div class="paragraph">
+<p>The Cloud Volume Service is evolving rapidly and as such I can tell you that API support for Snapshot creation is coming.</p>
+</div>
+<div class="paragraph">
+<p>NetApp Cloud Volume Snapshots are fast, plentiful and non-disruptive.  A NetApp Snapshot simply manipulates block pointers, creating a “frozen” read-only view of a volume that lets applications access older versions of files and directory hierarchies without special programming. Because the actual data blocks aren’t copied, Snapshot copies are extremely efficient both in the time needed to create them and in storage space. A Cloud Volume Snapshot copy takes only a few seconds to create—typically less than one second, regardless of the size of the volume or the level of activity within the environment.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="./media/snapshot_example.png" alt="snapshot example">
+</div>
+</div>
+<div class="paragraph">
+<p>A NetApp Cloud Volume Snapshot copy incurs no performance overhead; users can comfortably store up to 255 Snapshot copies per volume, all of which are accessible as read-only and online versions of the data.  Read-only via the ".snapshot" directory located at the root of the filesystem and online from a cloned volume today and in-place restore in the near future.  So what about user experience when working with the cloned volume?  Because of the pointer system, use of the cloned volume should provide a comparable experience to the use of the parent volume itself.</p>
+</div>
+<h2 id="netapps-snapshot-comparison" class="discrete">NetApp’s Snapshot comparison</h2>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="./media/comparision.png" alt="comparision">
+</div>
+</div>
+<h2 id="about-netapp" class="discrete">About NetApp</h2>
+<div class="paragraph">
+<p>NetApp is the data authority for hybrid cloud. We provide a full range of hybrid cloud data services that simplify management of data across cloud and on-premises environments to accelerate digital transformation. We empower global organizations to unleash the full potential of their data to expand customer touchpoints, foster greater innovation and optimize operations. For more information, visit: www.netapp.com #DataDriven</p>
+</div>
+
+                </article>
+                <!-- Page Container -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <!-- Footer -->
+      
+      <footer class="n-footer n-footer--v1" style="border-top: solid 10px #DFDFDF;">
+        <div class="n-footer__bottom">
+          <div class="n-container">
+            <div class="n-footer__bottom-left">
+              <div class="n-footer__copyright">
+                  <a href="//www.netapp.com/us/legal/copyright.aspx" class="n-footer__copyright-link">© 1994-2018 NetApp, Inc. All rights reserved.</a>
+              </div>
+              <div class="n-footer__copyright">
+                <a href="//www.netapp.com/us/legal/netapptmlist.aspx" class="n-footer__copyright-link">Trademarks</a>
+              </div>
+              <div class="n-footer__social-links">
+                <ul class="n-footer__social-link-list">
+                  <li class="n-footer__social-link-list-item">
+                    <a class="n-footer__social-link" data-ntap-social="follow-blog" href="http://blog.netapp.com" target="_blank" title="blog" alt="blog">
+                      <span class="n-footer__social-link-text">blog</span>
+                      <svg class="n-icon-blog n-footer__social-link-icon" aria-labelledby="title">
+                        <title>blog@</title>
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/hybridcloudsolutions/common/svg/sprite.svg#blog"></use>
+                      </svg>
+                    </a>
+                  </li>
+                  <li class="n-footer__social-link-list-item">
+                    <a class="n-footer__social-link" data-ntap-social="follow-community" href="http://community.netapp.com/" target="_blank" title="community" alt="community">
+                      <span class="n-footer__social-link-text">community</span>
+                      <svg class="n-icon-twitter n-footer__social-link-icon" aria-labelledby="title">
+                        <title>community@</title>
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/hybridcloudsolutions/common/svg/sprite.svg#comments"></use>
+                      </svg>
+                    </a>
+                  </li>
+
+                  <li class="n-footer__social-link-list-item">
+                    <a class="n-footer__social-link" data-ntap-social="follow-twitter" href="https://twitter.com/netappdoc" target="_blank" title="twitter" alt="twitter">
+                      <span class="n-footer__social-link-text">twitter</span>
+                      <svg class="n-icon-twitter n-footer__social-link-icon" aria-labelledby="title">
+                        <title>twitter@</title>
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/hybridcloudsolutions/common/svg/sprite.svg#twitter"></use>
+                      </svg>
+                    </a>
+                  </li>
+                  <li class="n-footer__social-link-list-item">
+                    <a class="n-footer__social-link" data-ntap-social="follow-youtube" href="https://www.youtube.com/user/NetAppTechCommTV/" target="_blank" title="youtube" alt="youtube">
+                      <span class="n-footer__social-link-text">youtube</span>
+                      <svg class="n-icon-youtube n-footer__social-link-icon" aria-labelledby="title">
+                        <title>youtube@</title>
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/hybridcloudsolutions/common/svg/sprite.svg#youtube"></use>
+                      </svg>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="n-footer__bottom-right">
+                <p class="n-footer__fine-print">
+                    Have feedback for our website?
+                    <a target="_self" href="javascript:netapp_mailto()">Let us know</a>
+                </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+    </div>
+
+    <script src="/hybridcloudsolutions/common/js/components.js"></script>
+    <script src="/hybridcloudsolutions/common/js/doc-components.js"></script>
+
+    <!-- i18n script -->
+    <script type="text/javascript" src="/hybridcloudsolutions/js/responsive.js"></script>
+
+    <!-- Elasticsearch JS -->
+    <script type="text/javascript" src='/hybridcloudsolutions/js/bundle.js'></script>
+  </body>
+
+  
+</html>

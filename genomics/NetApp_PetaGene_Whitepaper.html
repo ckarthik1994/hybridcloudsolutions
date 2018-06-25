@@ -1,0 +1,749 @@
+
+<!DOCTYPE html>
+<!--[if IE 9]>         <html class="ie9"> <![endif]-->
+<!--[if gt IE 9]><!--> <html>         <!--<![endif]-->
+  <head>
+  <title>NetApp And PetaGene: Accelerating the Genomics Revolution | NetApp Cloud Docs</title>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="format-detection" content="telephone=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge,chrome=1">
+  <meta http-equiv="encoding" content="utf-8">
+  <meta http-equiv="nss-type" content="Product Documentation">
+  <meta http-equiv="nss-subtype" content="User Guide">
+
+  
+
+  <meta name="description" content="Accelerating the Genomics Revolution">
+  <meta name="keywords" content=" NetApp, PetaGene, Durability, Reference Architecture">
+
+  <!-- Icons -->
+  <link rel="icon" href="/hybridcloudsolutions/images/favicon.ico" type="image/x-icon">
+
+  <!-- CSS Definitions: NetApp CSS should be defined after generic css -->
+
+  <!-- Elastic Search -->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/searchkit/0.10.0/theme.css">
+
+  <!-- LUCI CSS Content -->
+  <link rel="stylesheet" href="//luci.netapp.com/archives/3_3_2/bower_components/eightshapes-blocks/dist/esb.min.css">
+  <link rel="stylesheet" href="//luci.netapp.com/archives/3_3_2/netapp-library/css/netapp-library.min.css">
+  <link rel="stylesheet" href="//luci.netapp.com/archives/3_3_2/css/doc.css">
+  <link rel="stylesheet" href="//luci.netapp.com/archives/3_3_2/css/doc-components.css">
+
+  <link rel="stylesheet" href='/hybridcloudsolutions/css/na-sidebar.css' type='text/css'>
+  <link rel='stylesheet' href='/hybridcloudsolutions/css/na-search.css' type='text/css'>
+  <link rel='stylesheet' href='/hybridcloudsolutions/css/clouddocs.css' type='text/css'>
+
+  <!-- Font awesome seems to affect our GitHub Icon and generic "arrow box" for external links. -->
+  <link rel="stylesheet" type="text/css" href="/hybridcloudsolutions/css/font-awesome.min.css">
+  <!-- <link rel="stylesheet" href="/hybridcloudsolutions/css/customstyles.css"> -->
+  <!-- Controls the shadow effect for search dropdown menu -->
+  <link rel="stylesheet" href="/hybridcloudsolutions/css/boxshadowproperties.css">
+
+  <!-- NetApp CSS controls the technical content -->
+  <link rel='stylesheet' href='/hybridcloudsolutions/css/netapp.css' type='text/css'>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+  <!-- Used to import Promise for IE. Required for SearchKit -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.3.5/bluebird.min.js"></script>
+  
+    <script src='/hybridcloudsolutions/js/na-search.js'></script>
+  
+
+  <script src='/hybridcloudsolutions/js/clouddocs.js'></script>
+  <script src='/hybridcloudsolutions/js/s_code_impl.js'></script>
+  <script src="/hybridcloudsolutions/js/jquery.navgoco.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/2.0.0/anchor.min.js"></script>
+  <script src="/hybridcloudsolutions/js/toc.js"></script>
+  <script src="/hybridcloudsolutions/js/customscripts.js"></script>
+
+  <script>
+      $(document).ready(function() {
+          // Initialize navgoco with default options
+          $("#mysidebar").navgoco({
+              caretHtml: '',
+              accordion: true,
+              openClass: 'active', // open
+              save: false, // leave false or nav highlighting doesn't work right
+              cookie: {
+                  name: 'navgoco',
+                  expires: false,
+                  path: '/'
+              },
+              slide: {
+                  duration: 400,
+                  easing: 'swing'
+              }
+          });
+
+          $("#collapseAll").click(function(e) {
+              e.preventDefault();
+              $("#mysidebar").navgoco('toggle', false);
+          });
+
+          $("#expandAll").click(function(e) {
+              e.preventDefault();
+              $("#mysidebar").navgoco('toggle', true);
+          });
+
+      });
+
+  </script>
+  <script>
+      $(function () {
+          $('[data-toggle="tooltip"]').tooltip()
+      })
+  </script>
+  <script>
+      $(document).ready(function() {
+          $("#tg-sb-link").click(function() {
+              $("#tg-sb-sidebar").toggle();
+              $("#tg-sb-content").toggleClass('col-md-9');
+              $("#tg-sb-content").toggleClass('col-md-12');
+              $("#tg-sb-icon").toggleClass('fa-toggle-on');
+              $("#tg-sb-icon").toggleClass('fa-toggle-off');
+          });
+      });
+  </script>
+
+  <!-- Controls the i18n Browser Redirection -->
+  <script>
+    var siteLocales = [];
+    
+      siteLocales.push("zz");
+    
+      siteLocales.push("en");
+    
+      siteLocales.push("us-en");
+    
+
+    standardizeUrl(siteLocales, "clouddocs.netapp.com", "https://docs.netapp.com");
+  </script>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-81697994-3"></script>
+  <script>
+  if (document.location.hostname === "docs.netapp.com") {
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-81697994-3');
+  }
+  </script>
+</head>
+
+
+  <body class="n-doc__component-detail">
+    <a href="#n-main-content" class="visually-hidden">Skip to main content</a>
+<div class="n-off-canvas-menu">
+  <div class="n-off-canvas-menu__menu">
+    <div class="n-off-canvas-menu__menu-inner">
+      <div class="n-off-canvas-menu__property-title">NetApp Cloud Docs</div>
+      <ul class="n-off-canvas-menu__property-navigation-list">
+        <li class="n-off-canvas-menu__property-navigation-list-item ">
+          <a href="https://docs.netapp.com/zz/" class="n-off-canvas-menu__property-navigation-link">
+            Home
+          </a>
+          <div class="n-off-canvas-menu__child-menu">
+            <ul class="n-menu__list">
+
+            </ul>
+          </div>
+        </li>
+      </ul>
+
+      <ul class="n-off-canvas-menu__global-navigation-list">
+         <li class="n-off-canvas-menu__global-navigation-list-header">More From NetApp</li>
+         <li class="n-off-canvas-menu__global-navigation-list-item"><a href="#" class="n-off-canvas-menu__global-navigation-link">Netapp.com</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+    <div class="n-off-canvas-menu__content-wrap">
+      <!-- Header -->
+      <header>
+  <!-- Top Hat -->
+  <div class="n-top-hat">
+    <div class="n-container">
+      <div class="n-top-hat__cross-property-nav">
+        <ul class="n-top-hat__list">
+            <li class="n-top-hat__list-item">
+              <a href="http://www.netapp.com" class="n-top-hat__link">NetApp.com</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Property Bar -->
+  <div class="n-property-bar n-property-bar--v3">
+    <div class="n-property-bar__inner-wrap">
+      <div class="n-property-bar__menu-toggle">
+        <a href="#" class="n-property-bar__menu-toggle-link"><span class="n-property-bar__menu-toggle-text">Menu</span><svg class="n-icon-bars n-property-bar__menu-toggle-icon" aria-labelledby="title">
+          <title>bars</title>
+          <use xlink:href="/hybridcloudsolutions/common/svg/sprite.svg#bars"></use>
+        </svg></a>
+      </div>
+      <div class="n-property-bar__property-mark n-property-bar__property-mark--has-property-name">
+        <a class="n-property-bar__property-link" href="https://docs.netapp.com/zz/">
+          <div class="n-property-bar__logo">
+            <svg class="n-icon-netapp-mark n-property-bar__netapp-mark-icon" aria-labelledby="title">
+              <title>netapp-mark</title>
+              <use xlink:href="/hybridcloudsolutions/common/svg/sprite.svg#netapp-mark"></use>
+            </svg>
+            <svg viewBox="0 0 1008 181.537" class="n-property-bar__logo-svg" aria-labelledby="title">
+              <title>NetApp</title>
+              <use xlink:href="/hybridcloudsolutions/common/svg/sprite.svg#netapp-logo"></use>
+            </svg>
+          </div>
+          <h2 class="n-property-bar__property-name">Cloud Docs</h2>
+        </a>
+      </div>
+
+      <!-- NetApp Search Bar -->
+      
+      <div id="search-demo-container" class="n-property-bar__search">
+        <div id="react-search"></div>
+      </div>
+      
+
+      <div id="ie-i18n-menu" class="n-property-bar__utils">
+        <ul class="n-property-navigation-bar__utils-list">
+          <li class="n-property-navigation-bar__utils-list-item">
+            <a href="#" class="n-property-navigation-bar__utils-link n-property-navigation-bar__nav-link n-property-navigation-bar__language-selector-toggle" data-menu-id="n-property-navigation-bar__menu--language-selector">
+              <svg class="n-icon-globe n-globe__icon" aria-labelledby="title">
+                <title>globe</title>
+                <use xlink:href="/hybridcloudsolutions/common/svg/sprite.svg#globe"></use>
+              </svg>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <!-- End NetApp Search Bar -->
+    </div>
+
+    <div class="n-property-bar__menus">
+      <div id="n-property-navigation-bar__menu--language-selector" class="n-menu n-menu--v3">
+        <div class="n-language-selector-menu">
+          <div class="n-language-selector-menu__header">
+            <span class="n-language-selector-menu__title">Select Your Language</span>
+          </div>
+          <ul class="n-menu__list">
+            <li class="n-menu__list-column">
+              <ul class="n-menu__list">
+                <li class="n-menu__list-item n-menu__list-item--level-1">
+                  <a href="/hybridcloudsolutions/us-en/" class="n-menu__header-text">English</a>
+                </li>
+                
+              </ul>
+            </li>
+          </ul>
+          <div class="menu__footer">
+            <p>Current Language: zz
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+      <!-- Content -->
+      <main role="main" id="n-main-content" class="n-main-content">
+        <div class="n-container">
+          <div class="n-row">
+            <div class="n-doc n-doc__component-list">
+              <!-- Sidebar Column -->
+              
+              <div class="col-md-3" >
+                  
+
+<ul id="mysidebar" class="nav">
+  
+
+  
+    <li><a href="../index.html">Hybrid Cloud Solutions</a></li>
+  
+
+  
+    <!-- Check Container -->
+    <li class="subfolders">
+      <a href="#">Technology</a>
+      <ul>
+        
+
+  
+    <!-- Check Container -->
+    <li class="subfolders">
+      <a href="#">Cloud Volumes Service</a>
+      <ul>
+        
+
+  
+    <li><a href="../cloud_volumes_service/snapshot_cloud_volumes.html">Durability, Availability,Encryption and Snapshots</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+    <!-- Check Container -->
+    <li class="subfolders">
+      <a href="#">Cloud Volumes ONTAP</a>
+      <ul>
+        
+
+  
+    <li><a href="../cloud_volumes_ontap/networking_cloud_volumes_ontap.html">NetApp Cloud Volumes ONTAP And Enhanced Networking Support</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+    <!-- Check Container -->
+    <li class="subfolders">
+      <a href="#">NetApp Private Storage</a>
+      <ul>
+        
+
+  
+    <li><a href="../NPS/gdpr_and_hybrid_cloud.html">GDPR and Hybrid Cloud A More Perfect Union</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+    <!-- Check Container -->
+    <li class="subfolders">
+      <a href="#">Verticals</a>
+      <ul>
+        
+
+  
+
+  
+    <!-- Check Container -->
+    <li class="subfolders">
+      <a href="#">HealthCare</a>
+      <ul>
+        
+
+  
+    <!-- Check Container -->
+    <li class="subfolders">
+      <a href="#">Genomics</a>
+      <ul>
+        
+
+  
+    <li class="active"><a href="NetApp_PetaGene_Whitepaper.html">NetApp PetaGene Whitepaper</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+    <!-- Check Container -->
+    <li class="subfolders">
+      <a href="#">Applicatons</a>
+      <ul>
+        
+
+  
+
+  
+
+
+      </ul>
+    </li>
+  
+
+
+</ul>
+
+<!-- this highlights the active parent class in the navgoco sidebar. this is critical so that the parent expands when you're viewing a page. This must appear below the sidebar code above. Otherwise, if placed inside customscripts.js, the script runs before the sidebar code runs and the class never gets inserted.-->
+<script>$("li.active").parents('li').toggleClass("active");</script>
+
+              </div>
+              
+
+              <div class="n-doc__component-detail-content n-doc__component-detail-content--show-code">
+                <!-- Begin of page container -->
+                <article class="page-content">
+                  
+
+<div class="n-doc__component-detail-heading-wrap">
+  <h1 class="n-doc__component-detail-heading">NetApp And PetaGene: Accelerating the Genomics Revolution
+    <span>
+      
+        <a target="_blank" href="https://github.com/NetAppDocs/hybridcloudsolutions/blob/master/genomics/NetApp_PetaGene_Whitepaper.adoc" class="btn btn-default githubEditButton" role="button"><i class="fa fa-github fa-lg"></i> Edit on GitHub</a>
+      
+    </span>
+  </h1>
+</div>
+
+<div class="sect4">
+<h5 id="authors-karthik-chinnathambi-mary-hayes-david-labrosse-chad-morgenstern-justin-spears">Authors: Karthik Chinnathambi, Mary Hayes, David LaBrosse, Chad Morgenstern, Justin Spears</h5>
+
+</div>
+<h1 id="abstract" class="sect0">Abstract</h1>
+<div class="paragraph">
+<p>The objective of this document is to explain how NetApp and PetaGene ‘technology’ helps to accelerate genomic data analysis and bio medical discoveries. It explores how our cloud and on-premise based solutions can simplify genomic research collaboration, reduce research IT cost, and shorten genomic analysis time.</p>
+</div>
+<div class="paragraph">
+<p>The goal is to achieve true “precision medicine” where doctors and other care givers can provide customized treatments and medications based upon an individual’s unique genetic profile. While the ‘old’ healthcare treatment model of "one-size-fits-all" is still practiced, many clinicians believe that "personalized" care will become the standard around the world.</p>
+</div>
+<h1 id="benefits-summary" class="sect0">Benefits Summary</h1>
+<div class="paragraph">
+<p>Below is a brief list of the benefits which the NetApp and PetaGene collaboration brings to genomic researchers and bio medical clinicians. We are proud to provide technology and tools which can accelerate discoveries and can improve patient care.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong><span class="underline">Smaller Files = Faster Genomic Data Flows</span></strong> --- NetApp engineers recently confirmed that when PetaGene software shrinks the large genomic files into smaller, more portable files, there are immediate data flow benefits. For example, we verified that the smaller files can be transferred more rapidly across the NetApp Data Fabric. Faster genomic data benefits all stakeholders</p>
+</li>
+<li>
+<p><strong><span class="underline">5X Higher Data Efficiencies</span></strong> --- Another benefit which NetApp engineers verified during the testing is higher levels of data efficiencies. After running the PetaSuite data compression software, NetApp resources reported as much as 5X improvement in space efficiency.</p>
+</li>
+<li>
+<p><strong><span class="underline">Increase in Research Collaboration</span></strong> --- Having smaller files to manage makes it easier and faster to share genomic files between labs and research facilities across campus --- or even around the globe.</p>
+</li>
+<li>
+<p><strong><span class="underline">Cloud Enablement (AWS, Google, Azure, and more)</span></strong> --- NetApp and PetaGene provide multiple options for managing genomic data in cloud environments like AWS, Google, and others. Genomic files can be seamlessly and securely moved to and from the cloud to support a variety of cloud-based workflows. Further, cold data can be tiered to object storage using Fabric Pools, freeing performance tiers for new sequencing projects.</p>
+</li>
+<li>
+<p><strong><span class="underline">Interoperability of Files without Decompression</span></strong> --- Another benefit is that PetaSuite allows researchers to retain interoperability of existing workflows and formats. Specifically, PetaSuite software allows researchers and clinicians to continue using FASTQ and BAM file representations in their existing tools and pipelines, without needing to decompress first.</p>
+</li>
+<li>
+<p><strong><span class="underline">Reduce Operational Costs via Data Fabric - Life Cycle Management</span></strong> --- PetaGene’s software also helps to decrease research operations costs as it literally shrinks the amount of data which needs to be managed at different stages of its life cycle. Not only do the smaller genomic files enable more efficient data transfers, but they also accelerate data tiering. For example, some research data may need to be archived for short-term (or long-term) access by genomic researchers. Decreasing the size of the files via PetaSuite, PetaGene’s compression software, can save costs and time --- no matter if the data is in a cloud or on-premise. NetApp’s Data Fabric model allows researchers to seamlessly migrate genomic data --- where it’s needed --- when it’s needed locally or globally.</p>
+</li>
+</ul>
+</div>
+<h1 id="introduction" class="sect0">Introduction</h1>
+<div class="paragraph">
+<p>Scientists and bioinformaticians have long sought ways to reduce the size of the large genomic datasets by using a combination of data compression and reduction techniques. In the past, raw sequencer output had often been stored for extended periods, while bioinformaticians carried out the complex tasks needed in the assembly and alignment of the sequencing data. With these steps complete, the data could be used in variant calling and interpretation which are the vital steps in understanding gene expression and disease.</p>
+</div>
+<div class="paragraph">
+<p>Today this process is highly automated and has been greatly accelerated through a combination of parallel processing and the availability of reference genomes. There are now a number of compressed genomic file formats that reduce the size of an individually stored genome down to a few tens of gigabytes; work that previously took months or years can now be turned around in little more than a day. This has greatly improved the ability of bioinformaticians to work with and transfer data to clinicians in an efficient and timely manner.</p>
+</div>
+<div class="paragraph">
+<p>We are now entering the world of personalized or precision medicine. Faster sequencing and more compact datasets have increased the number of individual sequences that can be performed. Individual patient genomes and even their individual diseases, typically cancers, can be sequenced (tumors can and do have their own genetic makeup that can differ from that of the patient). This brings about great hope and opportunity for new insights, while at the same time increasing the pressure on data capacity.</p>
+</div>
+<h1 id="amplify-storage-efficiency" class="sect0">Amplify Storage Efficiency</h1>
+<div class="paragraph">
+<p>PetaGene’s software addresses the challenges caused by growing volumes of genomics data. PetaSuite is a set of scalable complementary software tools that significantly reduce the size and cost of NGS data for storage and transfer. It achieves up to 5x reduction <em>(as per NetApp’s testing)</em> in both storage costs and data transfer times compared to BAM and gzipped FASTQ files. PetaSuite transparently integrates with existing storage infrastructure and bioinformatics pipelines, while PetaLink provides a powerful virtual file access system. PetaLink produces a high performance virtual file view of the compressed file. This virtual file can then be transparently used just like the original file by Linux toolchains, pipelines and genome browsers.</p>
+</div>
+<div class="sect2">
+<h3 id="observed-compression-ratios">Observed Compression Ratios</h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top"><strong>Maximum Compression Ratio</strong></th>
+<th class="tableblock halign-center valign-top"><strong>Minimum Compression Ratio</strong></th>
+<th class="tableblock halign-center valign-top"><strong>Average Compression Ratio</strong></th>
+<th class="tableblock halign-center valign-top"><strong>Std. Deviation</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><strong>4.50</strong></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><strong>1.52</strong></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><strong>2.27</strong></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><strong>0.67</strong></p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph text-center">
+<p><em>Tested on 70 Genomic Data files</em></p>
+</div>
+</div>
+<h1 id="increase-data-mobility" class="sect0">Increase Data Mobility</h1>
+<div class="paragraph">
+<p>NetApp SnapMirror and CloudSync make it easy to move genomic data across various cloud environments and make it readily available where it is needed. This capability is further enhanced with PetaGene&#8217;s unique data compression technique. Three reference designs can be leveraged to efficiently store and access genomic data, improving performance and reducing cost.</p>
+</div>
+<div class="paragraph">
+<p>At a high level, the overall work flow is as such:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Raw genetic data is read by the sequencer, the results are written out in BCL format to an ONTAP cluster.</p>
+</li>
+<li>
+<p>As many companies prefer to split conversion of BCL to FASTQ and BAM formats across separate environments, the BCL files are SnapMirrored into a second ONTAP cluster. Though not strictly necessary, this convention was followed in the reference design.</p>
+</li>
+<li>
+<p>At the secondary site, the BCL files are processed and converted into FASTQ or BAM format.</p>
+</li>
+<li>
+<p>With the BAM and FASTQ files in place, PetaSuite compresses the files converting to BAM to CRAM and FASTQ to FasterQ formats respectively. The space savings discussed above are realized at this stage.</p>
+</li>
+<li>
+<p>The aforementioned compressed files are transferred from the secondary site to either volumes within the NetApp Cloud Volumes Service, a NetApp Cloud Volumes ONTAP Cluster or a NetApp Private Storage (NPS) Cluster. The transfer mechanism is dependent upon the target – CloudSync if NetApp Cloud Volumes Service or SnapMirror if NetApp’s Cloud Volumes ONTAP or NPS.</p>
+</li>
+<li>
+<p>All post-processing activity is performed in one of the various hyperscaler environments and all file interactions occur against the NetApp storage target.</p>
+</li>
+<li>
+<p>Resulting datasets may be replicated back to the origin data center as desired using either CloudSync or SnapMirror depending on the cloud solution.</p>
+</li>
+<li>
+<p>Aged files may be archived to object storage either in the public cloud [AWS S3, Azure Blob, or a Storage Grid Webscale target] or on premises using StorageGRID Webscale. NetApp CloudSync or FabricPool are recommended to handle the archival process.</p>
+</li>
+</ol>
+</div>
+<div class="sect1">
+<h2 id="speed-scale-and-simplicity-with-cloud-volumes-service">Speed, Scale and Simplicity with Cloud Volumes Service</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>NetApp Cloud Volumes Service is a cloud-native file storage service based on proven NetApp technology. This offering combines enterprise class storage with the simplicity and flexibility of the cloud, resulting in the ability to take your operation from 0TB to 100TB in less than 10 seconds. NetApp Cloud Volumes Service supports the NFS v3 and NFS v4 protocols along with SMB.</p>
+</div>
+<div class="paragraph">
+<p>For simplified replication into and out of NetApp Cloud Volumes, CloudSync is an intuitive replication and synchronization service. This software-as-a-service (SaaS) offering enables customers to transfer and synchronize data between source and destination of any type or formats, in the cloud or on premises. CloudSync supports NAS data (NFS and SMB), EFS, Amazon S3 and NetApp StorageGRID Webscale Appliance.</p>
+</div>
+<div class="sect2">
+<h3 id="figure-1-cloud-volumes-service-reference-design">Figure 1: Cloud Volumes Service reference design</h3>
+<div class="paragraph">
+<p><span class="image"><img src="./media/Cloud_Volumes_Service.png" alt="Cloud Volumes Service"></span></p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="control-protection-and-efficiency-with-cloud-volumes-ontap">Control, Protection and Efficiency with Cloud Volumes ONTAP</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>NetApp Cloud Volumes ONTAP delivers enterprise control, protection, and efficiency to your data with the flexibility of the cloud. Cloud Volumes ONTAP, a software-defined data management service built on NetApp’s ONTAP 9 storage operating system, provides a superior universal storage platform that addresses most cloud data needs. Having the same storage operating system in the cloud and on premises delivers the value of a Data Fabric without having to train IT staff in all-new methods to manage data. The SnapMirror features of ONTAP offer a bandwidth efficient data replication and transfer mechanism between clouds and to or from a datacenter.</p>
+</div>
+<div class="paragraph">
+<p>Cloud Volumes ONTAP provides a data storage solution that fits many different customer requirements –from disaster recovery, development, and test environments to critical applications that require highly available non-disruptive operation, such as production business applications and file services using NFS, SMB, and iSCSI. Setup and management of the Cloud Volumes ONTAP environment is simple and intuitive with NetApp OnCommand Cloud Manager web interface.</p>
+</div>
+<div class="sect2">
+<h3 id="figure-2-cloud-volumes-ontap-reference-design">Figure 2: Cloud Volumes ONTAP reference design</h3>
+<div class="paragraph">
+<p><span class="image"><img src="./media/Cloud_Volumes_ONTAP.png" alt="Cloud Volumes ONTAP"></span></p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="freedom-and-flexibility-with-netapp-private-storage">Freedom and Flexibility with NetApp Private Storage</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>NetApp Private Storage (NPS) is a cloud-connected storage solution that puts data near the cloud, providing the freedom and flexibility to run your application or workload on cloud compute while maintaining complete control of your data. NPS connectivity options allow you to choose from an expanding global network of cloud service providers, including Amazon Web Services, Google Cloud Platform, IBM Cloud and Microsoft Azure. Using NPS you can easily ensure compliance with HIPAA, GDPR or any other regulatory requirement.</p>
+</div>
+<div class="paragraph">
+<p>With NPS, your NetApp storage is housed in co-located cloud-connected data centers, next to major networks and in close proximity to all major clouds. Establishing secure, dedicated, high-speed connections to all those clouds is quick and easy, with the added advantage of enhanced performance and reduced cost by bypassing the internet. NetApp makes it easy to move data between clouds and any NetApp data management infrastructure, including public, private, and hybrid clouds. SnapMirror technology provides support for applications to fail over to a secondary system and continue operating, as well as the capability to fail back to the primary location later.</p>
+</div>
+<div class="sect2">
+<h3 id="figure-3-netapp-private-storage-nps-design">Figure 3: NetApp Private Storage (NPS) design</h3>
+<div class="paragraph">
+<p><span class="image"><img src="./media/NPS.png" alt="NPS"></span></p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="technology-comparison">Technology Comparison</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><strong>NetApp Private Storage</strong></th>
+<th class="tableblock halign-center valign-top"><strong>Cloud Volumes ONTAP</strong></th>
+<th class="tableblock halign-center valign-top"><strong>Cloud Volumes Service</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><strong>Legal restrictions</strong></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">X</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"> </p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"> </p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><strong>Data mobility</strong></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">X</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">X</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">X</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><strong>Multi cloud</strong></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">X</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"> </p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"> </p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><strong>Cloudy deployment</strong></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"> </p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">X</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">X</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><strong>Cost model</strong></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Opex &amp; CapEx models available</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">OpEx</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">OpEx</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><strong>Simplicity</strong></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"> </p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"> </p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">X</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><strong>Feature currency</strong></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">X</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"> </p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"> </p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><strong>Storage Tiering</strong></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">X</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">X</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">X</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<h1 id="about-petagene" class="sect0">About PetaGene</h1>
+<div class="paragraph">
+<p>PetaGene started from a team of Cambridge University PhDs who were working to devise a novel approach to the problem of storing the rapidly growing data associated Genomics. Through Project PetaGene, they created the means to compress huge amounts of genomic data without compromising data quality. PetaGene&#8217;s technology goes beyond normal storage data reduction techniques, using insight into the structure of Genomic Data to achieve its industry leading data reduction. For more information visit www.petagene.com or email <a href="mailto:sales@petagene.com">sales@petagene.com</a></p>
+</div>
+<h1 id="about-netapp" class="sect0">About NetApp</h1>
+<div class="paragraph">
+<p>NetApp is the data authority for hybrid cloud. We provide a full range of hybrid cloud data services that simplify management of data across cloud and on-premises environments to accelerate digital transformation. We empower global organizations to unleash the full potential of their data to expand customer touchpoints, foster greater innovation and optimize operations. For more information, visit: www.netapp.com #DataDriven</p>
+</div>
+
+                </article>
+                <!-- Page Container -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <!-- Footer -->
+      
+      <footer class="n-footer n-footer--v1" style="border-top: solid 10px #DFDFDF;">
+        <div class="n-footer__bottom">
+          <div class="n-container">
+            <div class="n-footer__bottom-left">
+              <div class="n-footer__copyright">
+                  <a href="//www.netapp.com/us/legal/copyright.aspx" class="n-footer__copyright-link">© 1994-2018 NetApp, Inc. All rights reserved.</a>
+              </div>
+              <div class="n-footer__copyright">
+                <a href="//www.netapp.com/us/legal/netapptmlist.aspx" class="n-footer__copyright-link">Trademarks</a>
+              </div>
+              <div class="n-footer__social-links">
+                <ul class="n-footer__social-link-list">
+                  <li class="n-footer__social-link-list-item">
+                    <a class="n-footer__social-link" data-ntap-social="follow-blog" href="http://blog.netapp.com" target="_blank" title="blog" alt="blog">
+                      <span class="n-footer__social-link-text">blog</span>
+                      <svg class="n-icon-blog n-footer__social-link-icon" aria-labelledby="title">
+                        <title>blog@</title>
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/hybridcloudsolutions/common/svg/sprite.svg#blog"></use>
+                      </svg>
+                    </a>
+                  </li>
+                  <li class="n-footer__social-link-list-item">
+                    <a class="n-footer__social-link" data-ntap-social="follow-community" href="http://community.netapp.com/" target="_blank" title="community" alt="community">
+                      <span class="n-footer__social-link-text">community</span>
+                      <svg class="n-icon-twitter n-footer__social-link-icon" aria-labelledby="title">
+                        <title>community@</title>
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/hybridcloudsolutions/common/svg/sprite.svg#comments"></use>
+                      </svg>
+                    </a>
+                  </li>
+
+                  <li class="n-footer__social-link-list-item">
+                    <a class="n-footer__social-link" data-ntap-social="follow-twitter" href="https://twitter.com/netappdoc" target="_blank" title="twitter" alt="twitter">
+                      <span class="n-footer__social-link-text">twitter</span>
+                      <svg class="n-icon-twitter n-footer__social-link-icon" aria-labelledby="title">
+                        <title>twitter@</title>
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/hybridcloudsolutions/common/svg/sprite.svg#twitter"></use>
+                      </svg>
+                    </a>
+                  </li>
+                  <li class="n-footer__social-link-list-item">
+                    <a class="n-footer__social-link" data-ntap-social="follow-youtube" href="https://www.youtube.com/user/NetAppTechCommTV/" target="_blank" title="youtube" alt="youtube">
+                      <span class="n-footer__social-link-text">youtube</span>
+                      <svg class="n-icon-youtube n-footer__social-link-icon" aria-labelledby="title">
+                        <title>youtube@</title>
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/hybridcloudsolutions/common/svg/sprite.svg#youtube"></use>
+                      </svg>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="n-footer__bottom-right">
+                <p class="n-footer__fine-print">
+                    Have feedback for our website?
+                    <a target="_self" href="javascript:netapp_mailto()">Let us know</a>
+                </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+    </div>
+
+    <script src="/hybridcloudsolutions/common/js/components.js"></script>
+    <script src="/hybridcloudsolutions/common/js/doc-components.js"></script>
+
+    <!-- i18n script -->
+    <script type="text/javascript" src="/hybridcloudsolutions/js/responsive.js"></script>
+
+    <!-- Elasticsearch JS -->
+    <script type="text/javascript" src='/hybridcloudsolutions/js/bundle.js'></script>
+  </body>
+
+  
+</html>

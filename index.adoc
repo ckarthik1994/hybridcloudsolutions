@@ -13,7 +13,7 @@ summary: Welcome to the documentation portal for Hybrid Cloud Solutions.
 :keywords: Hybrid Cloud Solutions, Genomics, documentation, help
 
 [.lead]
-Hybrid Cloud Solutions focusses on driving revenue by completing and enabling workloads on a cloud journey​. Based on our understanding of the customer’s problem, we empower our customers to get the best of our products and partner’s products. Our team works in close partnership with the product groups to close gaps and drive enhancements in our products to make a big difference in our solutions​.
+Hybrid Cloud Solutions focuses on driving revenue by completing and enabling workloads on a cloud journey​. Based on our understanding of the customer’s problem, we empower our customers to get the best of our products and partner’s products. Our team works in close partnership with the product groups to close gaps and drive enhancements in our products to make a big difference in our solutions​.
 
 [discrete]
 == Top Links

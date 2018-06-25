@@ -47,7 +47,7 @@ image::snapshot_example.png[align="center"]
 A NetApp Cloud Volume Snapshot copy incurs no performance overhead; users can comfortably store up to 255 Snapshot copies per volume, all of which are accessible as read-only and online versions of the data.  Read-only via the ".snapshot" directory located at the root of the filesystem and online from a cloned volume today and in-place restore in the near future.  So what about user experience when working with the cloned volume?  Because of the pointer system, use of the cloned volume should provide a comparable experience to the use of the parent volume itself.
 
 [discrete]
-== NetApp’s Snapshot comparison
+== NetApp Snapshot comparison
 image::comparision.png[align="center"]
 
 [discrete]

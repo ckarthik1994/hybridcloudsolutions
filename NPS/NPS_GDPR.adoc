@@ -1,0 +1,28 @@
+---
+sidebar: sidebar_NPS
+permalink: NPS/gdpr_and_hybrid_cloud.html
+keywords: GDPR, Hybrid Cloud, Cloud
+summary: GDPR and Hybrid Cloud, A More Perfect Union
+---
+
+= GDPR and Hybrid Cloud: A More Perfect Union
+:toc: macro
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+image::NPS_GDPR.png[align="center"]
+
+With the European Union’s General Data Protection Regulation (GDPR) now in full swing, chances are that some area of your business must rapidly alter how it manages the personal information and data of EU persons. With potential fines of up to 4 percent of global revenue for a GDPR violation, it is behooved of every business to ensure compliance with these regulations. But, how do you do that whilst still accelerating time to market and maintaining a competitive edge against the completion? The answer lays with Hybrid Cloud.
+
+By leveraging a hybrid cloud solution, organizations can help mitigate compliance risks associated with GDRP regulations. This allows businesses to gain the tremendous benefits of using the cloud for less sensitive data all the while storing more sensitive data on prem. Given NetApp’s inherent cloud-connected engineering we can leverage the product portfolio in several different ways to achieve the desired level of resiliency, cost-savings, compute capacity while still maintaining compliance. Consider the following two scenarios:
+
+1.  *On-Prem All Flash FAS (AFF) and Cloud Volumes Service*
+A NetApp AFF A800 array delivers ultra-low latency of below 200 microsecond and massive throughput of 300 GB/s powered by a combination of NVMe SSDs and NVMe/FC connectivity. In addition to being able to run your apps with unprecedented speed and scale you can maintain full control of the data on-prem. But with the introduction of NetApp Cloud Volumes offers customers a fully-managed, cloud-native file storage service that integrates directly into the on-prem AFF system. This means you can offload less secure data into the cloud seamlessly. Furthermore, if you have archival regulation that data can be moved into an even lower, long-term storage tier reducing cost and maintaining even the most stringent record-keeping requirements.
+
+2. *NetApp Private Storage (NPS) for Cloud*
+Each NPS for Cloud solution consists of a NetApp AFF storage system, collocated in an Equinix data center, and directly connected with a service provider’s cloud compute using a dedicated, high-bandwidth, low-latency network connection. With such an approach, the cloud compute is in essence local, while data remains protected, meeting privacy, regulatory, and sovereignty requirements. NPS for Cloud is based on the NetApp clustered Data ONTAP® storage operating system, offering a common storage management framework, or data fabric, with your on-premises data center. Thus, using a single known operating system, you can secure your regulated data on-prem and your less stringent data in the cloud.
+
+Using NetApp technology in a hybrid on- and off-prem model you can not only ensure compliance with GDPR and other regulatory bodies, but you can power the future of your data center and ensure your technological needs are met.

@@ -1,0 +1,43 @@
+---
+sidebar: sidebar_cvo
+permalink: cloud_volumes_ontap/networking_cloud_volumes_ontap.html
+keywords: Cloud Volumes ONTAP, Networking, Support, ONTAP Cloud
+summary: NetApp Cloud Volumes Service Improved Performance Through Enhanced Networking Support
+---
+
+= NetApp Cloud Volumes ONTAP, A.K.A. ONTAP Cloud
+:toc: macro
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+== Improved Performance Through Enhanced Networking Support
+
+If you haven’t heard the news, NetApp’s ONTAP Cloud has been rebranded as NetApp Cloud Volumes ONTAP. Along with the change comes exciting news of the release of support for ONTAP 9.4 – which in Amazon brings significant increases in front end performance. How cool is that, for once something really is both “New and Improved.”
+The most significant addition to the ONTAP 9.4 release for Cloud Volumes ONTAP is the inclusion of support for enhanced networking for the software defined storage system. As described by Amazon:
+
+_“Enhanced networking uses single root I/O virtualization (SR-IOV) to provide high-performance networking capabilities on https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html#supported_instances[supported instance types]. SR-IOV is a method of device virtualization that provides higher I/O performance and lower CPU utilization when compared to traditional virtualized network interfaces. Enhanced networking provides higher bandwidth, higher packet per second (PPS) performance, and consistently lower inter-instance latencies. There is no additional charge for using enhanced networking.”_
+
+Keep in mind that there are two types of enhanced networking interfaces supported by AWS and that NetApp supports at present the former (VF).
+
+1.  Intel 85299 Virtual Function (VF) interface which is supported within Xen hypervisor
+2.  Elastic network adapter supported from within KVM
+
+
+The following graph calls out the increase in performance introduced by upgrading from ONTAP 9.3 to ONTAP 9.4 on an active-passive HA pair based on the c4.8xlarge instance type. Using the SLOB2 workload generator and Oracle 12.2c we performed a 75% read 25% update workload using an 8K database block size. While the read I/O rate increased 25% simply by upgrading an Cloud Volumes ONTAP cluster, the latency reduction is even more impressive.
+
+image::CV_Networking_support_db_file_reads_vs_physical_reads.png[align="center"]
+
+The upgrade path from ONTAP 9.3 to ONTAP 9.4 is a breeze with OnCommand Cloud Manager (OCCM). OCCM takes care of everything from upgrading the Cloud Volumes ONTAP nodes without downtime (assuming your environment is running in an HA configuration) to enabling sriov-net-support on the instances. Its as simple as clicking on the “New version available link” below and checking yes on a few “I have read and acknowledge the above.”
+
+image::CV_Networking_support_cloud_manager.png[align="center"]
+
+Not all instance types support enhanced networking, OCCM can help you there too by showing which instance types support this enchantment (those with the lightning bolt as shown below) as well as managing the process of instance type change in case you are interested in such. As the upgrade process, instance type change may be performed non-disruptively if running in an HA configuration.
+
+image::CV_Networking_support_instance_type.png[align="center"]
+
+== About NetApp  
+
+NetApp is the data authority for hybrid cloud. We provide a full range of hybrid cloud data services that simplify management of data across cloud and on-premises environments to accelerate digital transformation. We empower global organizations to unleash the full potential of their data to expand customer touchpoints, foster greater innovation and optimize operations. For more information, visit: www.netapp.com #DataDriven 

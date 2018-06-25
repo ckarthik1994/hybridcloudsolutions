@@ -1,21 +1,21 @@
 entries:
   - title: Hybrid Cloud Solutions
-    url: /index.html
+    url: /../index.html
 
   - title: Technology
     entries:
       - title: Cloud Volumes Service
         entries :
             - title: Durability, Availability,Encryption and Snapshots
-              url: /cloud_volumes_service/snapshot_cloud_volumes.html
+              url: /../cloud_volumes_service/snapshot_cloud_volumes.html
       - title: Cloud Volumes ONTAP
         entries:
           - title: NetApp Cloud Volumes ONTAP And Enhanced Networking Support
-            url: /cloud_volumes_ontap/networking_cloud_volumes_ontap.html
+            url: /networking_cloud_volumes_ontap.html
       - title: NetApp Private Storage
         entries:
           - title: GDPR and Hybrid Cloud A More Perfect Union
-            url: /NPS/gdpr_and_hybrid_cloud.html
+            url: /../NPS/gdpr_and_hybrid_cloud.html
 
   - title: Verticals
     entries:
@@ -25,7 +25,7 @@ entries:
           - title: Genomics
             entries:
               - title: NetApp PetaGene Whitepaper
-                url: /genomics/NetApp_PetaGene_Whitepaper.html
+                url: /../genomics/NetApp_PetaGene_Whitepaper.html
       - title: Machine Learning
 
   - title: Applicatons

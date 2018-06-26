@@ -6,8 +6,10 @@ entries:
     entries:
       - title: Cloud Volumes Service
         entries :
-            - title: Durability, Availability,Encryption and Snapshots
+            - title: Durability, Availability, Encryption and Snapshots
               url: /snapshot_cloud_volumes.html
+            - title: Oracle in the Clouds
+              url: /oracle_perf_in_aws.html
       - title: Cloud Volumes ONTAP
         entries:
           - title: NetApp Cloud Volumes ONTAP And Enhanced Networking Support

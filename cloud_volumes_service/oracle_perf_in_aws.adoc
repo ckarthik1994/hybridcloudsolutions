@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar_cvs
 permalink: cloud_volumes_service/oracle_perf_in_aws.html
-keywords: cloud volumes service, durability, availability, snapshots, oracle,
-performance, dnfs, direct nfs, nfs
+keywords: cloud volumes service, durability, availability, snapshots, oracle, performance, dnfs, direct nfs, nfs
 summary: A review of Oracle performance as it pertains to the NetApp Cloud Volumes Service in AWS.
 ---
+
 = Oracle in the Clouds
 :toc: macro
 :hardbreaks:
@@ -28,7 +28,7 @@ The remainder of blog focuses on Oracle performance. Oracle is especially well s
 
 [discrete]
 ==== Performance
-When performing evaluations of database workloads, always keep in mind the impact of server memory. Ideally queries find ther data resident therein as latency from memory is always going to be orders of magnitude lower than any “disk” query. What does this mean for you? While storage latency matters, memory hit percentage matters more. When database administrators say that they need a latency of X, keep in mind what they are talking about.
+When performing evaluations of database workloads, always keep in mind the impact of server memory. Ideally queries find their data resident therein as latency from memory is always going to be orders of magnitude lower than any “disk” query. What does this mean for you? While storage latency matters, memory hit percentage matters more. When database administrators say that they need a latency of X, keep in mind what they are talking about.
 
 With that said…
 

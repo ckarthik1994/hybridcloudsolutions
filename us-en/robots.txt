@@ -1,1 +1,1 @@
-Sitemap: https://docs.netapp.com/hybridcloudsolutions/us-en/sitemap.xml
+Sitemap: https://docs.netapp.com/us-en/hybridcloudsolutions/sitemap.xml

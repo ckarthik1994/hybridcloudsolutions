@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+
+
+
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   
@@ -10,98 +13,98 @@
   
   
     <url>
-      <loc>https://docs.netapp.com/hybridcloudsolutions/NPS/gdpr_and_hybrid_cloud.html</loc>
+      <loc>https://docs.netapp.com/zz/hybridcloudsolutions/NPS/gdpr_and_hybrid_cloud.html</loc>
       
         <lastmod>2018-06-25T21:45:03+00:00</lastmod>
       
     </url>
   
     <url>
-      <loc>https://docs.netapp.com/hybridcloudsolutions/genomics/NetApp_PetaGene_Whitepaper.html</loc>
+      <loc>https://docs.netapp.com/zz/hybridcloudsolutions/genomics/NetApp_PetaGene_Whitepaper.html</loc>
       
         <lastmod>2018-06-25T21:16:44+00:00</lastmod>
       
     </url>
   
     <url>
-      <loc>https://docs.netapp.com/hybridcloudsolutions/</loc>
+      <loc>https://docs.netapp.com/zz/hybridcloudsolutions//</loc>
       
         <lastmod>2018-06-25T21:45:03+00:00</lastmod>
       
     </url>
   
     <url>
-      <loc>https://docs.netapp.com/hybridcloudsolutions/cloud_volumes_service/mysql_perf_in_aws.html</loc>
+      <loc>https://docs.netapp.com/zz/hybridcloudsolutions/cloud_volumes_service/mysql_perf_in_aws.html</loc>
       
         <lastmod>2018-06-28T15:19:38+00:00</lastmod>
       
     </url>
   
     <url>
-      <loc>https://docs.netapp.com/hybridcloudsolutions/mysql/mysql_perf_in_aws.html</loc>
+      <loc>https://docs.netapp.com/zz/hybridcloudsolutions/mysql/mysql_perf_in_aws.html</loc>
       
         <lastmod>2018-06-28T21:18:44+00:00</lastmod>
       
     </url>
   
     <url>
-      <loc>https://docs.netapp.com/hybridcloudsolutions/cloud_volumes_ontap/networking_cloud_volumes_ontap.html</loc>
+      <loc>https://docs.netapp.com/zz/hybridcloudsolutions/cloud_volumes_ontap/networking_cloud_volumes_ontap.html</loc>
       
         <lastmod>2018-06-25T21:16:44+00:00</lastmod>
       
     </url>
   
     <url>
-      <loc>https://docs.netapp.com/hybridcloudsolutions/cloud_volumes_service/oracle_perf_in_aws.html</loc>
+      <loc>https://docs.netapp.com/zz/hybridcloudsolutions/cloud_volumes_service/oracle_perf_in_aws.html</loc>
       
         <lastmod>2018-06-28T20:51:28+00:00</lastmod>
       
     </url>
   
     <url>
-      <loc>https://docs.netapp.com/hybridcloudsolutions/oracle/oracle_perf_in_aws.html</loc>
+      <loc>https://docs.netapp.com/zz/hybridcloudsolutions/oracle/oracle_perf_in_aws.html</loc>
       
         <lastmod>2018-06-28T21:18:44+00:00</lastmod>
       
     </url>
   
     <url>
-      <loc>https://docs.netapp.com/hybridcloudsolutions/NPS/search.html</loc>
+      <loc>https://docs.netapp.com/zz/hybridcloudsolutions/NPS/search.html</loc>
       
-        <lastmod>2018-06-29T13:36:16+00:00</lastmod>
-      
-    </url>
-  
-    <url>
-      <loc>https://docs.netapp.com/hybridcloudsolutions/cloud_volumes_ontap/search.html</loc>
-      
-        <lastmod>2018-06-29T13:36:16+00:00</lastmod>
+        <lastmod>2018-07-03T13:24:41+00:00</lastmod>
       
     </url>
   
     <url>
-      <loc>https://docs.netapp.com/hybridcloudsolutions/cloud_volumes_service/search.html</loc>
+      <loc>https://docs.netapp.com/zz/hybridcloudsolutions/cloud_volumes_ontap/search.html</loc>
       
-        <lastmod>2018-06-29T13:36:16+00:00</lastmod>
-      
-    </url>
-  
-    <url>
-      <loc>https://docs.netapp.com/hybridcloudsolutions/genomics/search.html</loc>
-      
-        <lastmod>2018-06-29T13:36:16+00:00</lastmod>
+        <lastmod>2018-07-03T13:24:41+00:00</lastmod>
       
     </url>
   
     <url>
-      <loc>https://docs.netapp.com/hybridcloudsolutions/search.html</loc>
+      <loc>https://docs.netapp.com/zz/hybridcloudsolutions/cloud_volumes_service/search.html</loc>
       
-        <lastmod>2018-06-29T13:36:16+00:00</lastmod>
+        <lastmod>2018-07-03T13:24:41+00:00</lastmod>
       
     </url>
   
     <url>
-      <loc>https://docs.netapp.com/hybridcloudsolutions/cloud_volumes_service/snapshot_cloud_volumes.html</loc>
+      <loc>https://docs.netapp.com/zz/hybridcloudsolutions/genomics/search.html</loc>
+      
+        <lastmod>2018-07-03T13:24:41+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/zz/hybridcloudsolutions//search.html</loc>
+      
+        <lastmod>2018-07-03T13:24:41+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/zz/hybridcloudsolutions/cloud_volumes_service/snapshot_cloud_volumes.html</loc>
       
         <lastmod>2018-06-25T21:16:44+00:00</lastmod>
       

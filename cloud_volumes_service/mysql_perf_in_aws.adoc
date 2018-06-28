@@ -38,7 +38,7 @@ To test MySQL with cloud volumes, NetApp used the TPC Benchmark C workload gener
 
 [discrete]
 ===== The Scenarios
-Two scenarios were tested in this environment, the first evaluated the capabilities of a single instance to drive MySQL I/O, while the second set out to determine the edges of a single cloud volume.   The results of both scenarios are shown in the graphic below. The gray line represents the single-instance and blue the multi-instance environment.  Please note that the latency reported in the graphics below represent storage latency as reported the by the database.
+Two scenarios were tested in this environment, the first evaluated the capabilities of a single instance to drive MySQL I/O, while the second set out to determine the edges of a single cloud volume.   The results of both scenarios are shown in the graphic below. The gray line represents the single-instance and blue the multi-instance environment.  Please note that the latency reported in the graphics below represent storage latency as reported by the database.
 
 [discrete]
 ===== The Results

@@ -6,20 +6,26 @@ entries:
     entries:
       - title: Cloud Volumes Service
         entries :
-            - title: Durability, Availability, Encryption and Snapshots
-              url: /../cloud_volumes_service/snapshot_cloud_volumes.html
-            - title: Oracle in the Clouds
-              url: /../cloud_volumes_service/oracle_perf_in_aws.html
-            - title: MySQL Performance and the NetApp Cloud Volumes Service for AWS
-              url: /../cloud_volumes_service/mysql_perf_in_aws.html
+          - title: Blogs
+            entries:
+              - title: The Value Add of NetApp Cloud Volumes Service
+                url: /../cloud_volumes_service/snapshot_cloud_volumes.html
+              - title: Oracle Performance and NetApp Cloud Volumes Service (AWS)
+                url: /../cloud_volumes_service/oracle_perf_in_aws.html
+              - title: MySQL Performance and NetApp Cloud Volumes Service (AWS)
+                url: /../cloud_volumes_service/mysql_perf_in_aws.html
       - title: Cloud Volumes ONTAP
         entries:
-          - title: NetApp Cloud Volumes ONTAP And Enhanced Networking Support
-            url: /../cloud_volumes_ontap/networking_cloud_volumes_ontap.html
+          - title: Blogs
+            entries:
+              - title: Performance Enhancments of NetApp Cloud Volumes ONTAP 9.4
+                url: /networking_cloud_volumes_ontap.html
       - title: NetApp Private Storage
         entries:
-          - title: GDPR and Hybrid Cloud A More Perfect Union
-            url: /../NPS/gdpr_and_hybrid_cloud.html
+          - title: Blogs
+            entries:
+              - title: GDPR and Hybrid Cloud A More Perfect Union
+                url: /../NPS/gdpr_and_hybrid_cloud.html
 
   - title: Industries
     entries:
@@ -38,7 +44,7 @@ entries:
         entries:
           - title: Blogs
             entries:
-              - title: Oracle Performance and the NetApp Cloud Volumes Service for AWS
+              - title: Oracle Performance and NetApp Cloud Volumes Service (AWS)
                 url: /../cloud_volumes_service/oracle_perf_in_aws.html
           - title: Technical Reports
             entries:
@@ -50,5 +56,5 @@ entries:
         entries:
           - title: Blogs
             entries:
-              - title: MySQL Performance and the NetApp Cloud Volumes Service for AWS
+              - title: MySQL Performance and NetApp Cloud Volumes Service (AWS)
                 url:  /../cloud_volumes_service/mysql_perf_in_aws.html

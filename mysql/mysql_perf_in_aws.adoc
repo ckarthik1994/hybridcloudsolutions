@@ -1,6 +1,6 @@
 ---
-sidebar: sidebar_cvs
-permalink: cloud_volumes_service/mysql_perf_in_aws.html
+sidebar: sidebar_mysql
+permalink: mysql/mysql_perf_in_aws.html
 keywords: cloud volumes service, durability, availability, snapshots, mysql, performance, nfs, AWS
 summary: A review of MySQL performance as it pertains to the NetApp Cloud Volumes Service in AWS.
 ---

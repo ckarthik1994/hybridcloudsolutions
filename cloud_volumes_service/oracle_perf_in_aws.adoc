@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar_cvs
 permalink: cloud_volumes_service/oracle_perf_in_aws.html
-keywords: cloud volumes service, durability, availability, snapshots, oracle, performance, dnfs, direct nfs, nfs
+keywords: cloud volumes service, durability, availability, snapshots, oracle, performance, dnfs, direct nfs, nfs, AWS
 summary: A review of Oracle performance as it pertains to the NetApp Cloud Volumes Service in AWS.
 ---
 

@@ -10,6 +10,8 @@ entries:
               url: /../cloud_volumes_service/snapshot_cloud_volumes.html
             - title: Oracle in the Clouds
               url: /../cloud_volumes_service/oracle_perf_in_aws.html
+            - title: MySQL Performance and the NetApp Cloud Volumes Service for AWS
+              url: /../cloud_volumes_service/mysql_perf_in_aws.html
       - title: Cloud Volumes ONTAP
         entries:
           - title: NetApp Cloud Volumes ONTAP And Enhanced Networking Support
@@ -19,7 +21,7 @@ entries:
           - title: GDPR and Hybrid Cloud A More Perfect Union
             url: /gdpr_and_hybrid_cloud.html
 
-  - title: Verticals
+  - title: Industries
     entries:
       - title: EDA
       - title: HealthCare
@@ -29,3 +31,24 @@ entries:
               - title: NetApp PetaGene Whitepaper
                 url: /../genomics/NetApp_PetaGene_Whitepaper.html
       - title: Machine Learning
+
+  - title: Business Applications
+    entries:
+      - title: Oracle
+        entries:
+          - title: Blogs
+            entries:
+              - title: Oracle Performance and the NetApp Cloud Volumes Service for AWS
+                url: /../cloud_volumes_service/oracle_perf_in_aws.html
+          - title: Technical Reports
+            entries:
+              - title: TR-4876 Oracle and NetApp Cloud Volumes ONTAP for AWS
+                url: https://www.netapp.com/us/media/tr-4676.pdf
+              - title: TR-4691 Oracle and NetApp Cloud Volumes ONTAP for Azure
+                url: https://www.netapp.com/us/media/tr-4691.pdf
+      - title: MySQL
+        entries:
+          - title: Blogs
+            entries:
+              - title: MySQL Performance and the NetApp Cloud Volumes Service for AWS
+                url:  /../cloud_volumes_service/mysql_perf_in_aws.html

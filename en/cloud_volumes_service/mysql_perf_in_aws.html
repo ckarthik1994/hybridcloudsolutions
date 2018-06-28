@@ -3,7 +3,7 @@
 <!--[if IE 9]>         <html class="ie9"> <![endif]-->
 <!--[if gt IE 9]><!--> <html>         <!--<![endif]-->
   <head>
-  <title>GDPR and Hybrid Cloud: A More Perfect Union | NetApp Cloud Docs</title>
+  <title>MySQL in the Clouds | NetApp Cloud Docs</title>
   <meta charset="utf-8">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,8 +15,8 @@
 
   
 
-  <meta name="description" content="GDPR and Hybrid Cloud, A More Perfect Union">
-  <meta name="keywords" content=" GDPR, Hybrid Cloud, Cloud">
+  <meta name="description" content="A review of MySQL performance as it pertains to the NetApp Cloud Volumes Service in AWS.">
+  <meta name="keywords" content=" cloud volumes service, durability, availability, snapshots, mysql, performance, nfs, AWS">
 
   <!-- Icons -->
   <link rel="icon" href="/hybridcloudsolutions/en/images/favicon.ico" type="image/x-icon">
@@ -267,7 +267,7 @@
   
 
   
-    <li><a href="../index.html">Hybrid Cloud Enablement</a></li>
+    <li><a href="../index.html">Hybrid Cloud Solutions</a></li>
   
 
   
@@ -285,15 +285,15 @@
         
 
   
-    <li><a href="../cloud_volumes_service/snapshot_cloud_volumes.html">Durability, Availability, Encryption and Snapshots</a></li>
+    <li><a href="snapshot_cloud_volumes.html">Durability, Availability, Encryption and Snapshots</a></li>
   
 
   
-    <li><a href="../cloud_volumes_service/oracle_perf_in_aws.html">Oracle in the Clouds</a></li>
+    <li><a href="oracle_perf_in_aws.html">Oracle in the Clouds</a></li>
   
 
   
-    <li><a href="../cloud_volumes_service/mysql_perf_in_aws.html">MySQL Performance and the NetApp Cloud Volumes Service for AWS</a></li>
+    <li class="active"><a href="mysql_perf_in_aws.html">MySQL Performance and the NetApp Cloud Volumes Service for AWS</a></li>
   
 
 
@@ -325,7 +325,7 @@
         
 
   
-    <li class="active"><a href="gdpr_and_hybrid_cloud.html">GDPR and Hybrid Cloud A More Perfect Union</a></li>
+    <li><a href="../NPS/gdpr_and_hybrid_cloud.html">GDPR and Hybrid Cloud A More Perfect Union</a></li>
   
 
 
@@ -404,7 +404,7 @@
         
 
   
-    <li><a href="../cloud_volumes_service/oracle_perf_in_aws.html">Oracle Performance and the NetApp Cloud Volumes Service for AWS</a></li>
+    <li><a href="oracle_perf_in_aws.html">Oracle Performance and the NetApp Cloud Volumes Service for AWS</a></li>
   
 
 
@@ -452,7 +452,7 @@
         
 
   
-    <li><a href="../cloud_volumes_service/mysql_perf_in_aws.html">MySQL Performance and the NetApp Cloud Volumes Service for AWS</a></li>
+    <li class="active"><a href="mysql_perf_in_aws.html">MySQL Performance and the NetApp Cloud Volumes Service for AWS</a></li>
   
 
 
@@ -485,41 +485,111 @@
                   
 
 <div class="n-doc__component-detail-heading-wrap">
-  <h1 class="n-doc__component-detail-heading">GDPR and Hybrid Cloud: A More Perfect Union
+  <h1 class="n-doc__component-detail-heading">MySQL in the Clouds
     <span>
       
-        <a target="_blank" href="https://github.com/NetAppDocs/hybridcloudsolutions/blob/master/NPS/gdpr_and_hybrid_cloud.adoc" class="btn btn-default githubEditButton" role="button"><i class="fa fa-github fa-lg"></i> Edit on GitHub</a>
+        <a target="_blank" href="https://github.com/NetAppDocs/hybridcloudsolutions/blob/master/cloud_volumes_service/mysql_perf_in_aws.adoc" class="btn btn-default githubEditButton" role="button"><i class="fa fa-github fa-lg"></i> Edit on GitHub</a>
       
     </span>
   </h1>
 </div>
 
+<h2 id="netapp-cloud-volumes-service-for-aws" class="discrete">NetApp Cloud Volumes Service For AWS</h2>
+<div class="paragraph">
+<p>A review of MySQL performance as it pertains to the NetApp Cloud Volumes Service in AWS.</p>
+</div>
+<h5 id="authors-ali-aiello-chad-morgenstern-ron-pratt" class="discrete">Authors: Ali Aiello, Chad Morgenstern, Ron Pratt</h5>
+<div class="paragraph">
+<p>Are looking for consistently good performance for your MySQL database - I mean, really, who is going to answer no to that question?  With or without snapshots, whether you are accessing the primary database or a snapshotted copy, you can expect excellent, consistent performance from the NetApp Cloud Volumes Service.  Performance is of course not the whole story. Databases need durability, data is a crown jewel of any enterprise.  Consumers demand the protection against theft provided by encryption, we&#8217;ve got that too, its managed by the service.  Add to these the advantage of accessing database volumes from any availability zone within the region – without the need to replicate to make this possible – and you&#8217;ll find that the NetApp Cloud Volumes Service is the ideal solution for your MySQL needs.</p>
+</div>
+<div class="paragraph">
+<p>Please see the blog <a href="snapshot_cloud_volumes.html">NetApp Cloud Volumes, Not Your Mothers File Service</a> for details regarding how NetApp Cloud Volumes approaches durability, encryption, and availability as well as some really nice details regarding the Cloud Volumes snapshot technology.</p>
+</div>
+<div class="paragraph">
+<p>The remainder of this blog focuses on MySQL performance.</p>
+</div>
+<h4 id="performance" class="discrete">Performance</h4>
+<div class="paragraph">
+<p>When performing evaluations of database workloads, always keep in mind the impact of server memory.  Ideally queries find their data resident therein as latency from memory is always going to be orders of magnitude lower than any “disk” query.  What does this mean for you?  While storage latency matters, memory hit percentage matters more.  When database administrators say that they need a latency of X, keep in mind what they are talking about.</p>
+</div>
+<div class="paragraph">
+<p>With that said…</p>
+</div>
+<h5 id="the-workload-generator" class="discrete">The Workload Generator</h5>
+<div class="paragraph">
+<p>To test MySQL with cloud volumes, NetApp used the TPC Benchmark C workload generator.  TPCC is an industry standard online transaction processing (OLTP) benchmark that leverages actual MySQL databases and their I/O paths. Workload generators that leverage real applications are always preferred over more synthetic generators such as Vdbench, Iozone, and heaven forbid dd, tar, cpio, or cp.  TPCC standardized on an 80/20 read:write workload, the test results in this section are based there on.</p>
+</div>
+<h5 id="the-scenarios" class="discrete">The Scenarios</h5>
+<div class="paragraph">
+<p>Two scenarios were tested in this environment, the first evaluated the capabilities of a single instance to drive MySQL I/O, while the second set out to determine the edges of a single cloud volume.   The results of both scenarios are shown in the graphic below. The gray line represents the single-instance and blue the multi-instance environment.  Please note that the latency reported in the graphics below represent storage latency as reported the by the database.</p>
+</div>
+<h5 id="the-results" class="discrete">The Results</h5>
+<div class="paragraph">
+<p>Run against the single instance, TPCC generated approximately 4.5Gbps worth of I/O which approaches the Amazon Web Service inter-VPC limit imposed per network connection.   Run against multiple instances, TPCC generated just about 16Gbps of throughput against a single Cloud Volume - which is pretty darned cool.</p>
+</div>
+<h6 id="figure-1-mysql-tpcc-test-graphic" class="discrete">Figure 1: MySQL TPCC Test Graphic</h6>
 <div class="imageblock" style="text-align: center">
 <div class="content">
-<img src="./media/NPS_GDPR.png" alt="NPS GDPR">
+<img src="./media/mysql_tpcc_perf_test_aws.png" alt="mysql tpcc perf test aws" width="800px">
 </div>
 </div>
+<h4 id="best-practices" class="discrete">Best Practices</h4>
 <div class="paragraph">
-<p>With the European Union’s General Data Protection Regulation (GDPR) now in full swing, chances are that some area of your business must rapidly alter how it manages the personal information and data of EU persons. With potential fines of up to 4 percent of global revenue for a GDPR violation, it is behooved of every business to ensure compliance with these regulations. NetApp Hybrid Cloud can provide your company the competitive advantage of accelerating time to market in this highly regulated space.</p>
+<p>The following parameters were placed in the MySQL /etc/my.cnf configuration file.</p>
 </div>
-<div class="paragraph">
-<p>By leveraging a hybrid cloud solution, organizations mitigate compliance risks associated with GDPR. Businesses may decide to leverage the cloud for less sensitive data all while storing more sensitive data on prem. The NetApp portfolio may be leveraged in several different ways to achieve the desired level of resiliency, cost-savings, and compute capacity while still maintaining compliance. Consider the following two scenarios:</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
+<div class="ulist">
+<ul>
 <li>
-<p><strong>On-Prem All Flash FAS (AFF) and Cloud Volumes Service</strong><br>
-A NetApp AFF A800 cluster delivers ultra-low latency of below 200 microsecond and massive throughput of up to 300 GB/s powered by a combination of NVMe SSDs and NVMe/FC connectivity. In addition to being able to run your apps with unprecedented speed and scale you can maintain full control of the data on-prem.<br>
-NetApp Cloud Volumes offers customers a fully-managed, cloud-native file storage service that integrates with on-prem AFF system via NetApp CloudSync. This means you can offload less secure data into the cloud seamlessly. Furthermore, if you have archival regulation requiring long term retention, you may choose to move content to an even lower, long-term storage tier reducing cost and maintaining even the most stringent record-keeping requirements.</p>
+<p>[MySQLd]</p>
+<div class="ulist">
+<ul>
+<li>
+<p>innodb_buffer_pool_size=23622320128</p>
 </li>
 <li>
-<p><strong>NetApp Private Storage (NPS) for Cloud</strong><br>
-Each NetApp Private Storage for Cloud solution consists of a NetApp AFF storage system.  The NPS systems are collocated in an Equinix data center and are directly connected with a service provider’s cloud compute using a dedicated, high-bandwidth, low-latency network connection. Leverage the scalability of cloud compute while honoring data privacy, regulatory, and sovereignty requirements. NPS for Cloud is based on the NetApp ONTAP® storage operating system, offering a common storage management framework, or data fabric, with your on-premises data center. Using a single known operating system, you secure your regulated data on-prem and your less stringent data in the cloud.</p>
+<p>innodb_log_buffer_size=4294967295</p>
 </li>
-</ol>
+<li>
+<p>innodb_log_file_size=1073741824</p>
+</li>
+<li>
+<p>innodb_flush_log_at_trx_commit=2</p>
+</li>
+<li>
+<p>innodb_open_files=4096</p>
+</li>
+<li>
+<p>innodb_page_size=4096</p>
+</li>
+<li>
+<p>innodb_read_io_threads=64</p>
+</li>
+<li>
+<p>innodb_write_io_threads=64</p>
+</li>
+<li>
+<p>performance_schema</p>
+</li>
+<li>
+<p>innodb_doublewrite=0;</p>
+</li>
+<li>
+<p>max_connections=1000</p>
+</li>
+<li>
+<p>innodb_thread_concurrency=128</p>
+</li>
+<li>
+<p>innodb_max_dirty_pages_pct=0</p>
+</li>
+</ul>
 </div>
+</li>
+</ul>
+</div>
+<h2 id="about-netapp" class="discrete">About NetApp</h2>
 <div class="paragraph">
-<p>The flexibility built into the NetApp portfolio enables customers to meet GDPR requirements without compromising on cost, speed or resiliency. Deploy as your needs demand.</p>
+<p>NetApp is the data authority for hybrid cloud. We provide a full range of hybrid cloud data services that simplify management of data across cloud and on-premises environments to accelerate digital transformation. NetApp empowers global organizations to unleash the full potential of their data to expand customer touchpoints, foster greater innovation and optimize operations. For more information, visit: www.netapp.com #DataDriven</p>
 </div>
 
                 </article>

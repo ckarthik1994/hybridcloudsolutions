@@ -3,7 +3,7 @@
 <!--[if IE 9]>         <html class="ie9"> <![endif]-->
 <!--[if gt IE 9]><!--> <html>         <!--<![endif]-->
   <head>
-  <title>NetApp Cloud Volumes ONTAP, A.K.A. ONTAP Cloud | NetApp Cloud Docs</title>
+  <title>MySQL in the Clouds | NetApp Cloud Docs</title>
   <meta charset="utf-8">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,11 +15,11 @@
 
   
 
-  <meta name="description" content="NetApp Cloud Volumes Service Improved Performance Through Enhanced Networking Support">
-  <meta name="keywords" content=" Cloud Volumes ONTAP, Networking, Support, ONTAP Cloud">
+  <meta name="description" content="A review of MySQL performance as it pertains to the NetApp Cloud Volumes Service in AWS.">
+  <meta name="keywords" content=" cloud volumes service, durability, availability, snapshots, mysql, performance, nfs, AWS">
 
   <!-- Icons -->
-  <link rel="icon" href="/hybridcloudsolutions/images/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/hybridcloudsolutions/en/images/favicon.ico" type="image/x-icon">
 
   <!-- CSS Definitions: NetApp CSS should be defined after generic css -->
 
@@ -32,34 +32,34 @@
   <link rel="stylesheet" href="//luci.netapp.com/archives/3_3_2/css/doc.css">
   <link rel="stylesheet" href="//luci.netapp.com/archives/3_3_2/css/doc-components.css">
 
-  <link rel="stylesheet" href='/hybridcloudsolutions/css/na-sidebar.css' type='text/css'>
-  <link rel='stylesheet' href='/hybridcloudsolutions/css/na-search.css' type='text/css'>
-  <link rel='stylesheet' href='/hybridcloudsolutions/css/clouddocs.css' type='text/css'>
+  <link rel="stylesheet" href='/hybridcloudsolutions/en/css/na-sidebar.css' type='text/css'>
+  <link rel='stylesheet' href='/hybridcloudsolutions/en/css/na-search.css' type='text/css'>
+  <link rel='stylesheet' href='/hybridcloudsolutions/en/css/clouddocs.css' type='text/css'>
 
   <!-- Font awesome seems to affect our GitHub Icon and generic "arrow box" for external links. -->
-  <link rel="stylesheet" type="text/css" href="/hybridcloudsolutions/css/font-awesome.min.css">
-  <!-- <link rel="stylesheet" href="/hybridcloudsolutions/css/customstyles.css"> -->
+  <link rel="stylesheet" type="text/css" href="/hybridcloudsolutions/en/css/font-awesome.min.css">
+  <!-- <link rel="stylesheet" href="/hybridcloudsolutions/en/css/customstyles.css"> -->
   <!-- Controls the shadow effect for search dropdown menu -->
-  <link rel="stylesheet" href="/hybridcloudsolutions/css/boxshadowproperties.css">
+  <link rel="stylesheet" href="/hybridcloudsolutions/en/css/boxshadowproperties.css">
 
   <!-- NetApp CSS controls the technical content -->
-  <link rel='stylesheet' href='/hybridcloudsolutions/css/netapp.css' type='text/css'>
+  <link rel='stylesheet' href='/hybridcloudsolutions/en/css/netapp.css' type='text/css'>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
   <!-- Used to import Promise for IE. Required for SearchKit -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.3.5/bluebird.min.js"></script>
   
-    <script src='/hybridcloudsolutions/js/na-search.js'></script>
+    <script src='/hybridcloudsolutions/en/js/na-search.js'></script>
   
 
-  <script src='/hybridcloudsolutions/js/clouddocs.js'></script>
-  <script src='/hybridcloudsolutions/js/s_code_impl.js'></script>
-  <script src="/hybridcloudsolutions/js/jquery.navgoco.min.js"></script>
+  <script src='/hybridcloudsolutions/en/js/clouddocs.js'></script>
+  <script src='/hybridcloudsolutions/en/js/s_code_impl.js'></script>
+  <script src="/hybridcloudsolutions/en/js/jquery.navgoco.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/2.0.0/anchor.min.js"></script>
-  <script src="/hybridcloudsolutions/js/toc.js"></script>
-  <script src="/hybridcloudsolutions/js/customscripts.js"></script>
+  <script src="/hybridcloudsolutions/en/js/toc.js"></script>
+  <script src="/hybridcloudsolutions/en/js/customscripts.js"></script>
 
   <script>
       $(document).ready(function() {
@@ -144,7 +144,7 @@
       <div class="n-off-canvas-menu__property-title">NetApp Cloud Docs</div>
       <ul class="n-off-canvas-menu__property-navigation-list">
         <li class="n-off-canvas-menu__property-navigation-list-item ">
-          <a href="https://docs.netapp.com/zz/" class="n-off-canvas-menu__property-navigation-link">
+          <a href="https://docs.netapp.com/en/" class="n-off-canvas-menu__property-navigation-link">
             Home
           </a>
           <div class="n-off-canvas-menu__child-menu">
@@ -185,19 +185,19 @@
       <div class="n-property-bar__menu-toggle">
         <a href="#" class="n-property-bar__menu-toggle-link"><span class="n-property-bar__menu-toggle-text">Menu</span><svg class="n-icon-bars n-property-bar__menu-toggle-icon" aria-labelledby="title">
           <title>bars</title>
-          <use xlink:href="/hybridcloudsolutions/common/svg/sprite.svg#bars"></use>
+          <use xlink:href="/hybridcloudsolutions/en/common/svg/sprite.svg#bars"></use>
         </svg></a>
       </div>
       <div class="n-property-bar__property-mark n-property-bar__property-mark--has-property-name">
-        <a class="n-property-bar__property-link" href="https://docs.netapp.com/zz/">
+        <a class="n-property-bar__property-link" href="https://docs.netapp.com/en/">
           <div class="n-property-bar__logo">
             <svg class="n-icon-netapp-mark n-property-bar__netapp-mark-icon" aria-labelledby="title">
               <title>netapp-mark</title>
-              <use xlink:href="/hybridcloudsolutions/common/svg/sprite.svg#netapp-mark"></use>
+              <use xlink:href="/hybridcloudsolutions/en/common/svg/sprite.svg#netapp-mark"></use>
             </svg>
             <svg viewBox="0 0 1008 181.537" class="n-property-bar__logo-svg" aria-labelledby="title">
               <title>NetApp</title>
-              <use xlink:href="/hybridcloudsolutions/common/svg/sprite.svg#netapp-logo"></use>
+              <use xlink:href="/hybridcloudsolutions/en/common/svg/sprite.svg#netapp-logo"></use>
             </svg>
           </div>
           <h2 class="n-property-bar__property-name">Cloud Docs</h2>
@@ -217,7 +217,7 @@
             <a href="#" class="n-property-navigation-bar__utils-link n-property-navigation-bar__nav-link n-property-navigation-bar__language-selector-toggle" data-menu-id="n-property-navigation-bar__menu--language-selector">
               <svg class="n-icon-globe n-globe__icon" aria-labelledby="title">
                 <title>globe</title>
-                <use xlink:href="/hybridcloudsolutions/common/svg/sprite.svg#globe"></use>
+                <use xlink:href="/hybridcloudsolutions/en/common/svg/sprite.svg#globe"></use>
               </svg>
             </a>
           </li>
@@ -243,7 +243,7 @@
             </li>
           </ul>
           <div class="menu__footer">
-            <p>Current Language: zz
+            <p>Current Language: en
             </p>
           </div>
         </div>
@@ -267,7 +267,7 @@
   
 
   
-    <li><a href="../index.html">Hybrid Cloud Solutions</a></li>
+    <li><a href="../index.html">Hybrid Cloud Enablement</a></li>
   
 
   
@@ -328,7 +328,7 @@
         
 
   
-    <li class="active"><a href="networking_cloud_volumes_ontap.html">Performance Enhancments of NetApp Cloud Volumes ONTAP 9.4</a></li>
+    <li><a href="../cloud_volumes_ontap/networking_cloud_volumes_ontap.html">Performance Enhancments of NetApp Cloud Volumes ONTAP 9.4</a></li>
   
 
 
@@ -496,7 +496,7 @@
         
 
   
-    <li><a href="../mysql/mysql_perf_in_aws.html">MySQL Performance and NetApp Cloud Volumes Service (AWS)</a></li>
+    <li class="active"><a href="mysql_perf_in_aws.html">MySQL Performance and NetApp Cloud Volumes Service (AWS)</a></li>
   
 
 
@@ -529,73 +529,111 @@
                   
 
 <div class="n-doc__component-detail-heading-wrap">
-  <h1 class="n-doc__component-detail-heading">NetApp Cloud Volumes ONTAP, A.K.A. ONTAP Cloud
+  <h1 class="n-doc__component-detail-heading">MySQL in the Clouds
     <span>
       
-        <a target="_blank" href="https://github.com/NetAppDocs/hybridcloudsolutions/blob/master/cloud_volumes_ontap/networking_cloud_volumes_ontap.adoc" class="btn btn-default githubEditButton" role="button"><i class="fa fa-github fa-lg"></i> Edit on GitHub</a>
+        <a target="_blank" href="https://github.com/NetAppDocs/hybridcloudsolutions/blob/master/mysql/mysql_perf_in_aws.adoc" class="btn btn-default githubEditButton" role="button"><i class="fa fa-github fa-lg"></i> Edit on GitHub</a>
       
     </span>
   </h1>
 </div>
 
-<div class="sect1">
-<h2 id="improved-performance-through-enhanced-networking-support">Improved Performance Through Enhanced Networking Support</h2>
-<div class="sectionbody">
+<h2 id="netapp-cloud-volumes-service-for-aws" class="discrete">NetApp Cloud Volumes Service For AWS</h2>
 <div class="paragraph">
-<p>If you haven’t heard the news, NetApp ONTAP Cloud has been rebranded as NetApp Cloud Volumes ONTAP. Along with the change comes exciting news of the release of support for ONTAP 9.4 – which in Amazon brings significant increases in front end performance. How cool is that, for once something really is both “New and Improved.”</p>
+<p>A review of MySQL performance as it pertains to the NetApp Cloud Volumes Service in AWS.</p>
+</div>
+<h5 id="authors-ali-aiello-chad-morgenstern-ron-pratt" class="discrete">Authors: Ali Aiello, Chad Morgenstern, Ron Pratt</h5>
+<div class="paragraph">
+<p>Are looking for consistently good performance for your MySQL database - I mean, really, who is going to answer no to that question?  With or without snapshots, whether you are accessing the primary database or a snapshotted copy, you can expect excellent, consistent performance from the NetApp Cloud Volumes Service.  Performance is of course not the whole story. Databases need durability, data is a crown jewel of any enterprise.  Consumers demand the protection against theft provided by encryption, we&#8217;ve got that too, its managed by the service.  Add to these the advantage of accessing database volumes from any availability zone within the region – without the need to replicate to make this possible – and you&#8217;ll find that the NetApp Cloud Volumes Service is the ideal solution for your MySQL needs.</p>
 </div>
 <div class="paragraph">
-<p>The most significant addition to the ONTAP 9.4 release for Cloud Volumes ONTAP is the inclusion of support for enhanced networking for the software defined storage system. As described by Amazon:</p>
+<p>Please see the blog <a href="snapshot_cloud_volumes.html">NetApp Cloud Volumes, Not Your Mothers File Service</a> for details regarding how NetApp Cloud Volumes approaches durability, encryption, and availability as well as some really nice details regarding the Cloud Volumes snapshot technology.</p>
 </div>
 <div class="paragraph">
-<p><em>“Enhanced networking uses single root I/O virtualization (SR-IOV) to provide high-performance networking capabilities on <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html#supported_instances">supported instance types</a>. SR-IOV is a method of device virtualization that provides higher I/O performance and lower CPU utilization when compared to traditional virtualized network interfaces. Enhanced networking provides higher bandwidth, higher packet per second (PPS) performance, and consistently lower inter-instance latencies. There is no additional charge for using enhanced networking.”</em></p>
+<p>The remainder of this blog focuses on MySQL performance.</p>
+</div>
+<h4 id="performance" class="discrete">Performance</h4>
+<div class="paragraph">
+<p>When performing evaluations of database workloads, always keep in mind the impact of server memory.  Ideally queries find their data resident therein as latency from memory is always going to be orders of magnitude lower than any “disk” query.  What does this mean for you?  While storage latency matters, memory hit percentage matters more.  When database administrators say that they need a latency of X, keep in mind what they are talking about.</p>
 </div>
 <div class="paragraph">
-<p>Keep in mind that there are two types of enhanced networking interfaces supported by AWS and that NetApp supports at present the former (VF).</p>
+<p>With that said…</p>
 </div>
-<div class="olist arabic">
-<ol class="arabic">
+<h5 id="the-workload-generator" class="discrete">The Workload Generator</h5>
+<div class="paragraph">
+<p>To test MySQL with cloud volumes, NetApp used the TPC Benchmark C workload generator.  TPCC is an industry standard online transaction processing (OLTP) benchmark that leverages actual MySQL databases and their I/O paths. Workload generators that leverage real applications are always preferred over more synthetic generators such as Vdbench, Iozone, and heaven forbid dd, tar, cpio, or cp.  TPCC standardized on an 80/20 read:write workload, the test results in this section are based there on.</p>
+</div>
+<h5 id="the-scenarios" class="discrete">The Scenarios</h5>
+<div class="paragraph">
+<p>Two scenarios were tested in this environment, the first evaluated the capabilities of a single instance to drive MySQL I/O, while the second set out to determine the edges of a single cloud volume.   The results of both scenarios are shown in the graphic below. The gray line represents the single-instance and blue the multi-instance environment.  Please note that the latency reported in the graphics below represent storage latency as reported by the database.</p>
+</div>
+<h5 id="the-results" class="discrete">The Results</h5>
+<div class="paragraph">
+<p>Run against the single instance, TPCC generated approximately 4.5Gbps worth of I/O which approaches the Amazon Web Service inter-VPC limit imposed per network connection.   Run against multiple instances, TPCC generated just about 16Gbps of throughput against a single Cloud Volume - which is pretty darned cool.</p>
+</div>
+<h6 id="figure-1-mysql-tpcc-test-graphic" class="discrete">Figure 1: MySQL TPCC Test Graphic</h6>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="./media/mysql_tpcc_perf_test_aws.png" alt="mysql tpcc perf test aws" width="800px">
+</div>
+</div>
+<h4 id="best-practices" class="discrete">Best Practices</h4>
+<div class="paragraph">
+<p>The following parameters were placed in the MySQL /etc/my.cnf configuration file.</p>
+</div>
+<div class="ulist">
+<ul>
 <li>
-<p>Intel 85299 Virtual Function (VF) interface which is supported within Xen hypervisor</p>
+<p>[MySQLd]</p>
+<div class="ulist">
+<ul>
+<li>
+<p>innodb_buffer_pool_size=23622320128</p>
 </li>
 <li>
-<p>Elastic network adapter supported from within KVM</p>
+<p>innodb_log_buffer_size=4294967295</p>
 </li>
-</ol>
+<li>
+<p>innodb_log_file_size=1073741824</p>
+</li>
+<li>
+<p>innodb_flush_log_at_trx_commit=2</p>
+</li>
+<li>
+<p>innodb_open_files=4096</p>
+</li>
+<li>
+<p>innodb_page_size=4096</p>
+</li>
+<li>
+<p>innodb_read_io_threads=64</p>
+</li>
+<li>
+<p>innodb_write_io_threads=64</p>
+</li>
+<li>
+<p>performance_schema</p>
+</li>
+<li>
+<p>innodb_doublewrite=0;</p>
+</li>
+<li>
+<p>max_connections=1000</p>
+</li>
+<li>
+<p>innodb_thread_concurrency=128</p>
+</li>
+<li>
+<p>innodb_max_dirty_pages_pct=0</p>
+</li>
+</ul>
 </div>
+</li>
+</ul>
+</div>
+<h2 id="about-netapp" class="discrete">About NetApp</h2>
 <div class="paragraph">
-<p>The following graph calls out the increase in performance introduced by upgrading from ONTAP 9.3 to ONTAP 9.4 on an active-passive HA pair based on the c4.8xlarge instance type. Using the SLOB2 workload generator and Oracle 12.2c we performed a 75% read 25% update workload using an 8K database block size. While the read I/O rate increased 25% simply by upgrading an Cloud Volumes ONTAP cluster, the latency reduction is even more impressive.</p>
-</div>
-<div class="imageblock" style="text-align: center">
-<div class="content">
-<img src="./media/CV_Networking_support_db_file_reads_vs_physical_reads.png" alt="CV Networking support db file reads vs physical reads">
-</div>
-</div>
-<div class="paragraph">
-<p>The upgrade path from ONTAP 9.3 to ONTAP 9.4 is a breeze with OnCommand Cloud Manager (OCCM). OCCM takes care of everything from upgrading the Cloud Volumes ONTAP nodes without downtime (assuming your environment is running in an HA configuration) to enabling sriov-net-support on the instances. Its as simple as clicking on the “New version available link” below and checking yes on a few “I have read and acknowledge the above.”</p>
-</div>
-<div class="imageblock" style="text-align: center">
-<div class="content">
-<img src="./media/CV_Networking_support_cloud_manager.png" alt="CV Networking support cloud manager">
-</div>
-</div>
-<div class="paragraph">
-<p>Not all instance types support enhanced networking, OCCM can help you there too by showing which instance types support this enchantment (those with the lightning bolt as shown below) as well as managing the process of instance type change in case you are interested in such. As the upgrade process, instance type change may be performed non-disruptively if running in an HA configuration.</p>
-</div>
-<div class="imageblock" style="text-align: center">
-<div class="content">
-<img src="./media/CV_Networking_support_instance_type.png" alt="CV Networking support instance type">
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="about-netapp">About NetApp  </h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>NetApp is the data authority for hybrid cloud. We provide a full range of hybrid cloud data services that simplify management of data across cloud and on-premises environments to accelerate digital transformation. We empower global organizations to unleash the full potential of their data to expand customer touchpoints, foster greater innovation and optimize operations. For more information, visit: www.netapp.com #DataDriven </p>
-</div>
-</div>
+<p>NetApp is the data authority for hybrid cloud. We provide a full range of hybrid cloud data services that simplify management of data across cloud and on-premises environments to accelerate digital transformation. NetApp empowers global organizations to unleash the full potential of their data to expand customer touchpoints, foster greater innovation and optimize operations. For more information, visit: www.netapp.com #DataDriven</p>
 </div>
 
                 </article>
@@ -625,7 +663,7 @@
                       <span class="n-footer__social-link-text">blog</span>
                       <svg class="n-icon-blog n-footer__social-link-icon" aria-labelledby="title">
                         <title>blog@</title>
-                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/hybridcloudsolutions/common/svg/sprite.svg#blog"></use>
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/hybridcloudsolutions/en/common/svg/sprite.svg#blog"></use>
                       </svg>
                     </a>
                   </li>
@@ -634,7 +672,7 @@
                       <span class="n-footer__social-link-text">community</span>
                       <svg class="n-icon-twitter n-footer__social-link-icon" aria-labelledby="title">
                         <title>community@</title>
-                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/hybridcloudsolutions/common/svg/sprite.svg#comments"></use>
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/hybridcloudsolutions/en/common/svg/sprite.svg#comments"></use>
                       </svg>
                     </a>
                   </li>
@@ -644,7 +682,7 @@
                       <span class="n-footer__social-link-text">twitter</span>
                       <svg class="n-icon-twitter n-footer__social-link-icon" aria-labelledby="title">
                         <title>twitter@</title>
-                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/hybridcloudsolutions/common/svg/sprite.svg#twitter"></use>
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/hybridcloudsolutions/en/common/svg/sprite.svg#twitter"></use>
                       </svg>
                     </a>
                   </li>
@@ -653,7 +691,7 @@
                       <span class="n-footer__social-link-text">youtube</span>
                       <svg class="n-icon-youtube n-footer__social-link-icon" aria-labelledby="title">
                         <title>youtube@</title>
-                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/hybridcloudsolutions/common/svg/sprite.svg#youtube"></use>
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/hybridcloudsolutions/en/common/svg/sprite.svg#youtube"></use>
                       </svg>
                     </a>
                   </li>
@@ -672,14 +710,14 @@
 
     </div>
 
-    <script src="/hybridcloudsolutions/common/js/components.js"></script>
-    <script src="/hybridcloudsolutions/common/js/doc-components.js"></script>
+    <script src="/hybridcloudsolutions/en/common/js/components.js"></script>
+    <script src="/hybridcloudsolutions/en/common/js/doc-components.js"></script>
 
     <!-- i18n script -->
-    <script type="text/javascript" src="/hybridcloudsolutions/js/responsive.js"></script>
+    <script type="text/javascript" src="/hybridcloudsolutions/en/js/responsive.js"></script>
 
     <!-- Elasticsearch JS -->
-    <script type="text/javascript" src='/hybridcloudsolutions/js/bundle.js'></script>
+    <script type="text/javascript" src='/hybridcloudsolutions/en/js/bundle.js'></script>
   </body>
 
   

@@ -1,0 +1,94 @@
+---
+sidebar: sidebar_cvs
+permalink: cloud_volumes_service/oracle_perf_in_aws.html
+keywords: cloud volumes service, durability, availability, snapshots, oracle, performance, dnfs, direct nfs, nfs, AWS
+summary: A review of Oracle performance as it pertains to the NetApp Cloud Volumes Service in AWS.
+---
+
+= Oracle in the Clouds
+:toc: macro
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[discrete]
+== NetApp Cloud Volumes Service For AWS
+A review of Oracle performance as it pertains to the NetApp Cloud Volumes Service in AWS.
+
+[discrete]
+===== Authors: Ali Aiello, Joe Carter, Chad Morgenstern
+
+If you are thinking about your data in the clouds, consider that the NetApp Cloud Volumes Service is about more than just NFS or SMB. With the NetApp Cloud Volumes Service, you can rest assured that your data is durable, encrypted, highly available and performant.
+
+Please see the blog link:snapshot_cloud_volumes.html[NetApp Cloud Volumes, Not Your Mothers File Service] for details regarding how NetApp Cloud Volumes approaches durability, encryption, and availability as well as some really nice details regarding the Cloud Volumes snapshot technology.
+
+The remainder of blog focuses on Oracle performance. Oracle is especially well suited for inclusion in the NetApp Cloud Volumes Service. Beyond the fact that your data is protected by 8 nines of durability and is accessible across all the availability zones within a given region, Oracle's Direct NFS client seems almost purpose built for Amazon's AWS architecture. More on that later.
+
+[discrete]
+==== Performance
+When performing evaluations of database workloads, always keep in mind the impact of server memory. Ideally queries find their data resident therein as latency from memory is always going to be orders of magnitude lower than any “disk” query. What does this mean for you? While storage latency matters, memory hit percentage matters more. When database administrators say that they need a latency of X, keep in mind what they are talking about.
+
+With that said…
+
+The Oracle Direct NFS client spawns many network sessions to each NetApp Cloud volume, doing so as load demands. The vast number of network sessions brings the potential for a significant amount of throughput for the database. Far greater than a single network session can provide in AWS.
+
+To test Oracle's ability to generate load, NetApp ran a series of proofs of concept across various EC2 instance types, with various workload mixtures and volume counts. The SLOB2 workload generator drove the workload against a single Oracle 12.2c database. Keep in mind that at present AWS has no support for Oracle RAC, so single node testing was our only option.
+
+The testing showed that the while any instance size is fine - run an instance size according to your need - Oracle and NetApp Cloud Volumes can consume the resources of even the largest instance. Towards that end, the graphics below focus on the c5.18xlarge instance type.
+
+[discrete]
+====== Workload : 100% Update
+Amazon AWS imposes an architectural egress limit of 5Gbps for all I/O leaving the VPC. This limit defines the lower threshold in the graphic below, as seen in the 100% update workload represented by the green lines below. This workload amounts to 50% read and 50% write, the writes being the limiting factor. Though the two-volume test resulted in slightly lower application latency compared to the one-volume test, both volume counts converge at the same point the VPC egress limit which worked out to be just around 130,000 Oracle IOPS.
+
+[discrete]
+====== Workload : 100% Read
+The 100% read workload represents the upper limit for the Oracle Database running against the NetApp Cloud Volumes Service in AWS. The pure read workload scenario, as shown by the red lines, is limited only by the instance type and the amount of network and CPU resources available to the instance. Just as the 100% update workload discussed above, though the two-volume configuration resulted in lower application latency, the tested configurations converged at the instance resource limit. In this case just shy of 300,000 Oracle IOPS.
+
+[discrete]
+====== Workload : 75% Read 25% Update
+The third workload, shown in purple, is a 75% Oracle read and 25% Oracle update or read-modify-write workload. This scenario performed exceptionally well be it with one or two volumes, though the two-volume scenario outperformed the other. Many database administrators prefer the simplicity of a single volume database, 200,000 IOPS ought to satisfy all but the most demanding of database needs and doing so with the simple layout desired by these dba's. For those needing more, additional volumes will enable greater throughput as shown below.
+
+[discrete]
+====== Figure 1: Oracle SLOB Test Graphic
+image::oracle_slob_perf_test_aws.png[align="center", width = "800px"]
+
+[discrete]
+==== Best Practices
+
+* init.ora file
+** db_file_multiblock_read_countr
+** remove this option if present
+
+* Redo block size:
+** Set to either 512 or 4KB, in general leave as default 512, unless recommended otherwise by App or Oracle.
+** If redo rates are greater than 50MBps, consider testing a 4KB block size
+
+* Network considerations
+** Enable TCP timestamps, selective acknowledgement (SACK), and TCP window scaling on hosts
+
+* Slot tables
+** sunrpc.tcp_slot_table_entries = 128
+** sunrpc.tcp_max_slot_table_entries = 65536
+
+
+* Mount options
+[discrete]
+[cols="^,^",options="header", .center]
+|=======================================================================================================
+|*File Type*|*Mount Options*
+|ADR_home |rw,bg,hard,vers=3,proto=tcp,timeo=600,rsize=65536,wsize=65536
+|Oracle Home |rw,bg,hard,vers=3,proto=tcp,timeo=600,rsize=65536,wsize=65536,nointr
+|Control Files |rw,bg,hard,vers=3,proto=tcp,timeo=600,rsize=65536,wsize=65536,nointr
+|Redo Logs |rw,bg,hard,vers=3,proto=tcp,timeo=600,rsize=65536,wsize=65536,nointr
+|Datafiles |rw,bg,hard,vers=3,proto=tcp,timeo=600,rsize=65536,wsize=65536,nointr
+
+
+|=======================================================================================================
+
+
+
+[discrete]
+== About NetApp
+NetApp is the data authority for hybrid cloud. We provide a full range of hybrid cloud data services that simplify management of data across cloud and on-premises environments to accelerate digital transformation. NetApp empowers global organizations to unleash the full potential of their data to expand customer touchpoints, foster greater innovation and optimize operations. For more information, visit: www.netapp.com #DataDriven

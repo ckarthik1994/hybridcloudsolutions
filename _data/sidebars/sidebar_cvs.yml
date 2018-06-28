@@ -41,7 +41,11 @@ entries:
           - title: Blogs
             entries:
               - title: Oracle Performance and NetApp Cloud Volumes Service (AWS)
+<<<<<<< HEAD
                 url: /../oracle/oracle_perf_in_aws.html
+=======
+                url: /oracle_perf_in_aws.html
+>>>>>>> 1eae194a2991c2cc9722bebff716d1f6647a5237
           - title: Technical Reports
             entries:
               - title: TR-4876 Oracle and NetApp Cloud Volumes ONTAP for AWS
@@ -53,4 +57,8 @@ entries:
           - title: Blogs
             entries:
               - title: MySQL Performance and NetApp Cloud Volumes Service (AWS)
+<<<<<<< HEAD
                 url:  /../mysql/mysql_perf_in_aws.html
+=======
+                url: /mysql_perf_in_aws.html
+>>>>>>> 1eae194a2991c2cc9722bebff716d1f6647a5237

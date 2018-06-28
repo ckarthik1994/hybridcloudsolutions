@@ -1,0 +1,73 @@
+---
+sidebar: sidebar_ba
+permalink: cloud_volumes_service/mysql_perf_in_aws.html
+keywords: cloud volumes service, durability, availability, snapshots, mysql, performance, nfs, AWS
+summary: A review of MySQL performance as it pertains to the NetApp Cloud Volumes Service in AWS.
+---
+
+= MySQL in the Clouds
+:toc: macro
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[discrete]
+== NetApp Cloud Volumes Service For AWS
+A review of MySQL performance as it pertains to the NetApp Cloud Volumes Service in AWS.
+
+[discrete]
+===== Authors: Ali Aiello, Chad Morgenstern, Ron Pratt
+
+Are looking for consistently good performance for your MySQL database - I mean, really, who is going to answer no to that question?  With or without snapshots, whether you are accessing the primary database or a snapshotted copy, you can expect excellent, consistent performance from the NetApp Cloud Volumes Service.  Performance is of course not the whole story. Databases need durability, data is a crown jewel of any enterprise.  Consumers demand the protection against theft provided by encryption, we've got that too, its managed by the service.  Add to these the advantage of accessing database volumes from any availability zone within the region – without the need to replicate to make this possible – and you'll find that the NetApp Cloud Volumes Service is the ideal solution for your MySQL needs.
+
+Please see the blog link:/../cloud_volumes_service/snapshot_cloud_volumes.html[NetApp Cloud Volumes, Not Your Mothers File Service] for details regarding how NetApp Cloud Volumes approaches durability, encryption, and availability as well as some really nice details regarding the Cloud Volumes snapshot technology.
+
+The remainder of this blog focuses on MySQL performance.
+
+[discrete]
+==== Performance
+When performing evaluations of database workloads, always keep in mind the impact of server memory.  Ideally queries find their data resident therein as latency from memory is always going to be orders of magnitude lower than any “disk” query.  What does this mean for you?  While storage latency matters, memory hit percentage matters more.  When database administrators say that they need a latency of X, keep in mind what they are talking about.
+
+With that said…
+
+[discrete]
+===== The Workload Generator
+To test MySQL with cloud volumes, NetApp used the TPC Benchmark C workload generator.  TPCC is an industry standard online transaction processing (OLTP) benchmark that leverages actual MySQL databases and their I/O paths. Workload generators that leverage real applications are always preferred over more synthetic generators such as Vdbench, Iozone, and heaven forbid dd, tar, cpio, or cp.  TPCC standardized on an 80/20 read:write workload, the test results in this section are based there on.
+
+[discrete]
+===== The Scenarios
+Two scenarios were tested in this environment, the first evaluated the capabilities of a single instance to drive MySQL I/O, while the second set out to determine the edges of a single cloud volume.   The results of both scenarios are shown in the graphic below. The gray line represents the single-instance and blue the multi-instance environment.  Please note that the latency reported in the graphics below represent storage latency as reported by the database.
+
+[discrete]
+===== The Results
+Run against the single instance, TPCC generated approximately 4.5Gbps worth of I/O which approaches the Amazon Web Service inter-VPC limit imposed per network connection.   Run against multiple instances, TPCC generated just about 16Gbps of throughput against a single Cloud Volume - which is pretty darned cool.
+
+[discrete]
+====== Figure 1: MySQL TPCC Test Graphic
+image::mysql_tpcc_perf_test_aws.png[align="center", width = "800px"]
+
+[discrete]
+==== Best Practices
+
+The following parameters were placed in the MySQL /etc/my.cnf configuration file.
+
+* [MySQLd]
+** innodb_buffer_pool_size=23622320128
+** innodb_log_buffer_size=4294967295
+** innodb_log_file_size=1073741824
+** innodb_flush_log_at_trx_commit=2
+** innodb_open_files=4096
+** innodb_page_size=4096
+** innodb_read_io_threads=64
+** innodb_write_io_threads=64
+** performance_schema
+** innodb_doublewrite=0;
+** max_connections=1000
+** innodb_thread_concurrency=128
+** innodb_max_dirty_pages_pct=0
+
+[discrete]
+== About NetApp
+NetApp is the data authority for hybrid cloud. We provide a full range of hybrid cloud data services that simplify management of data across cloud and on-premises environments to accelerate digital transformation. NetApp empowers global organizations to unleash the full potential of their data to expand customer touchpoints, foster greater innovation and optimize operations. For more information, visit: www.netapp.com #DataDriven

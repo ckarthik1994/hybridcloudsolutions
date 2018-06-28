@@ -1,0 +1,56 @@
+entries:
+  - title: Hybrid Cloud Solutions
+    url: /../index.html
+
+  - title: Technology
+    entries:
+      - title: Cloud Volumes Service
+        entries :
+          - title: Blogs
+            entries:
+              - title: The Value Add of NetApp Cloud Volumes Service
+                url: /snapshot_cloud_volumes.html
+              - title: Oracle Performance and NetApp Cloud Volumes Service (AWS)
+                url: /oracle_perf_in_aws.html
+              - title: MySQL Performance and NetApp Cloud Volumes Service (AWS)
+                url: /mysql_perf_in_aws.html
+      - title: Cloud Volumes ONTAP
+        entries:
+          - title: Performance Enhancments of NetApp Cloud Volumes ONTAP 9.4
+            url: /../cloud_volumes_ontap/networking_cloud_volumes_ontap.html
+      - title: NetApp Private Storage
+        entries:
+          - title: GDPR and Hybrid Cloud A More Perfect Union
+            url: /../NPS/gdpr_and_hybrid_cloud.html
+
+  - title: Industries
+    entries:
+      - title: HealthCare
+        entries:
+          - title: Genomics
+            entries:
+              - title: Technical Reports
+                entries:
+                  - title: NetApp PetaGene Whitepaper
+                    url: /../genomics/NetApp_PetaGene_Whitepaper.html
+
+  - title: Business Applications
+    entries:
+      - title: Oracle
+        entries:
+          - title: Blogs
+            entries:
+              - title: Oracle Performance and NetApp Cloud Volumes Service (AWS)
+                url: /oracle_perf_in_aws.html
+          - title: Technical Reports
+            entries:
+              - title: TR-4876 Oracle and NetApp Cloud Volumes ONTAP for AWS
+                url: https://www.netapp.com/us/media/tr-4676.pdf
+              - title: TR-4691 Oracle and NetApp Cloud Volumes ONTAP for Azure
+                url: https://www.netapp.com/us/media/tr-4691.pdf
+      - title: MySQL
+        entries:
+          - title: Blogs
+            entries:
+              - title: MySQL Performance and NetApp Cloud Volumes Service (AWS)
+                url: /mysql_perf_in_aws.html

@@ -22,7 +22,7 @@ A review of Oracle performance as it pertains to the NetApp Cloud Volumes Servic
 
 If you are thinking about your data in the clouds, consider that the NetApp Cloud Volumes Service is about more than just NFS or SMB. With the NetApp Cloud Volumes Service, you can rest assured that your data is durable, encrypted, highly available and performant.
 
-Please see the blog link:/../cloud_volumes_service/snapshot_cloud_volumes.html[NetApp Cloud Volumes, Not Your Mothers File Service] for details regarding how NetApp Cloud Volumes approaches durability, encryption, and availability as well as some really nice details regarding the Cloud Volumes snapshot technology.
+Please see the blog https://docs.netapp.com/us-en/hybridcloudsolutions/cloud_volumes_service/snapshot_cloud_volumes.html[NetApp Cloud Volumes, Not Your Mothers File Service] for details regarding how NetApp Cloud Volumes approaches durability, encryption, and availability as well as some really nice details regarding the Cloud Volumes snapshot technology.
 
 The remainder of blog focuses on Oracle performance. Oracle is especially well suited for inclusion in the NetApp Cloud Volumes Service. Beyond the fact that your data is protected by 8 nines of durability and is accessible across all the availability zones within a given region, Oracle's Direct NFS client seems almost purpose built for Amazon's AWS architecture. More on that later.
 

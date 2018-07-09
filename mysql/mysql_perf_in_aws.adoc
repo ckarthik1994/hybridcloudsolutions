@@ -25,6 +25,7 @@ Are looking for consistently good performance for your MySQL database - I mean, 
 Please see the blog https://docs.netapp.com/us-en/hybridcloudsolutions/cloud_volumes_service/snapshot_cloud_volumes.html[NetApp Cloud Volumes, Not Your Mothers File Service] for details regarding how NetApp Cloud Volumes approaches durability, encryption, and availability as well as some really nice details regarding the Cloud Volumes snapshot technology.
 
 
+
 The remainder of this blog focuses on MySQL performance.
 
 [discrete]

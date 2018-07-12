@@ -1,0 +1,233 @@
+---
+sidebar: sidebar_cvs
+permalink: cloud_volumes_service/cost_cloud_volumes_service.html
+keywords: NetApp, cloud volumes service, cost, throughput, capacity, AWS, performance
+summary: Get the right value for your money
+---
+
+= Get the right value for your money
+:toc: macro
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+=== NetApp Cloud Volumes Service for AWS
+
+===== Authors: Chad Morgenstern, Karthik Chinnathambi
+
+There are two knobs to define user experience in the NetApp Cloud Volumes Service for AWS, namely service Level and quota. Whereas service levels define the amount of storage bandwidth accessible per stated GB, a quota is the stated GB against which a service level is applied. If you are scratching your head about now, you are not alone.
+
+At its most basic, your storage needs come down to two things:
+
+1.  Space to hold your content, we call this storage capacity.
+2.  Bandwidth to interact with your content.
+
+Just as there is one ring to rule them all however, thanks Sauron, there is one concern more fundamental then them all, namely *cost*. You need capacity and bandwidth and you want it as cheap as you can get it. This is where service levels and quotas come in. As with Amazon, your cost is calculated per gigabyte month. The cost per gigabyte per month is based on the service level you choose and in general (today) on the amount of capacity you define by the quota size you select.
+
+If you happen to consume more capacity then the quota allows, that’s ok, just be aware of the following:
+
+1.  You will be billed for the additional capacity you consume at the price defined by the service level.
+2.  The amount of bandwidth available to the volume does not increase, not until you either increase the quota size or change the service level.
+
+I’m getting ahead of myself, so what are service levels again?
+
+== Service Levels:
+
+Today there are three service levels as shown in the screen shot below.
+
+image:cloud_volumes_service_levels.png[align="center"]
+
+The service levels are defined to fit three separate needs as such, they are designed to strike a balance between storage capacity needs and storage bandwidth needs. Everything shown below is as of July 10, 2018:
+
+* Standard (capacity):
++
+If you want capacity at the lowest cost, and your bandwidth needs are limited, then standard may be right for you. An example use case could backup target.
++
+List Price: $0.15 per GB per month
++
+Bandwidth: 16KB of bandwidth per GB provisioned capacity
+* Extreme (performance):
++
+Considering cost per MB/s of bandwidth, this is the cheapest of all settings. When Maverick said he had the “need for speed” he WAS SO talking about this. If your application(s) demands lots of storage, while you can get it here, it’s going to be pricey.
++
+List Price: $0.40 per GB per month
++
+Bandwidth: 128KB of bandwidth per GB provisioned capacity
+* Premium (a cost balance of capacity and performance): This setting may be right for you if your application has a balanced need for bandwidth and storage space. Less expensive per MB/s than Standard and less expensive for GB of storage capacity then Extreme.
++
+List Price: $0.30 per GB per month
++
+Bandwidth: 64KB of bandwidth per GB provisioned capacity
+
+== Quotas:
+
+While your service level selection is defined in general by your high-level business need, quota selections on the other hand are defined by the more specific need of the application. Namely:
+
+1.  How much storage space you need today or soon.
+2.  How much storage bandwidth per second your applications or users require.
+
+Quotas are stated in terms of gigabytes as the screen shot below shows. Though this may change in the future, today quotas may be set anywhere from 1 GB all the way up to 100,000 GB also known as 100 terabytes.
+
+image:cloud_volumes_quotas.png[align="center"]
+
+== Bandwidth:
+
+You’ll notice that the Cloud Volumes interface says nothing about bandwidth though from the start of this blog we have been calling it out as a fundamental need. In the words of my four-year-old daughter, “What Da Heck.”
+
+Unlike capacity which is explicitly stated, bandwidth needs are calculated based upon the values of service level and quota.
+
+Note: The calculated value defines the maximum amount of bandwidth available at the storage layer. If your application or users need more bandwidth than this, you will need to either increase the quota size, change the service level – both of which may be done on the fly.
+
+== Selection Process:
+
+Use the table at the bottom of this section to inform your service level and quota size choice. All you need to know up front is how much capacity and bandwidth is required at the peak or edge. The left most column lists the capacity options, that’s simple enough. The three columns to the right define the MB/s available at each capacity point and the cost there of.
+
+By way of example, the following three scenarios explain the usage of the table.
+
+This first scenario is straight forward enough. Your application requires 25TB of capacity and will consume roughly 100MB of bandwidth. At 25TB of capacity (as seen on the left of the table) standard the standard service level provides 391MB/s of bandwidth at a cost of $3,750 making the Standard service level the obvious choice.
+
+image:cloud_volumes_example_1.png[align = "center",width=611,height=116]
+
+This second scenario is a bit more complicated as the most cost-effective selection is not straight forward. This time the application needs 12TB of capacity and 800MB of peak bandwidth. While the Extreme service level can meet the demands of the application at the 12TB mark, going with 14TB at the Premium service is the most cost-effective solution saving $600 per month.
+
+image:cloud_volumes_example_2.png[align = "center",width=611,height=116]
+
+
+In this third and final scenario we find that our service level selection needs change over time.
+
+At the outset, the application required 4TB of capacity and 400MB of bandwidth to satisfy its peak demand. Over time the application capacity needs increased while the bandwidth needs remained the same, databases do this.
+
+The cloud volume is 100TB in size, so there is no risk of running out of space. You set your quota to 4TB at the Extreme service level which means you are from the outset paying $1,600 per month for capacity and the equivalent bandwidth. Once your used space breaches the quota size (4TB in this case), you are charged for each additional gigabyte. Once you breach ~6TB of used space, it makes sense to switch from Extreme to Premium service levels. At 7TB of capacity, the Premium service level has the provides the needed bandwidth at $2,100 per month compared to the $2,800 price tag afforded at the Extreme service level.
+
+image:cloud_volumes_example_3.png[align = "center",width=624,height=137]
+
+To see the complete comparison and details please go through the below table.
+
+=== Cost below reflect list prices as of July 10, 2018
+
+[cols="^15,^1,^15,^15,^1,^15,^15,^1,^15,^15",   options="header", align = "center"]
+|========================================================================
+h| *Capacity*
+|
+2+h| *Standard*
+|
+2+h| *Premium*
+|
+2+h| *Extreme*
+
+h| TB
+h|
+h| MB/s
+h| Cost
+h|
+h| MB/s
+h| Cost
+h|
+h| MB/s
+h| Cost
+
+|1 |  |16 |$150 |  |63 |$300 |  |125 |$400
+|2 |  |31 |$300 |  |125 |$600 |  |250 |$800
+|3 |  |47 |$450 |  |188 |$900 |  |375 |$1,200
+|4 |  |63 |$600 |  |250 |$1,200 |  |500 |$1,600
+|5 |  |78 |$750 |  |313 |$1,500 |  |625 |$2,000
+|6 |  |94 |$900 |  |375 |$1,800 |  |750 |$2,400
+|7 |  |109 |$1,050 |  |438 |$2,100 |  |875 |$2,800
+|8 |  |125 |$1,200 |  |500 |$2,400 |  |1,000 |$3,200
+|9 |  |141 |$1,350 |  |563 |$2,700 |  |1,125 |$3,600
+|10 |  |156 |$1,500 |  |625 |$3,000 |  |1,250 |$4,000
+|11 |  |172 |$1,650 |  |688 |$3,300 |  |1,375 |$4,400
+|12 |  |188 |$1,800 |  |750 |$3,600 |  |1,500 |$4,800
+|13 |  |203 |$1,950 |  |813 |$3,900 |  |1,625 |$5,200
+|14 |  |219 |$2,100 |  |875 |$4,200 |  |1,750 |$5,600
+|15 |  |234 |$2,250 |  |938 |$4,500 |  |1,875 |$6,000
+|16 |  |250 |$2,400 |  |1,000 |$4,800 |  |2,000 |$6,400
+|17 |  |266 |$2,550 |  |1,063 |$5,100 |  |2,125 |$6,800
+|18 |  |281 |$2,700 |  |1,125 |$5,400 |  |2,250 |$7,200
+|19 |  |297 |$2,850 |  |1,188 |$5,700 |  |2,375 |$7,600
+|20 |  |313 |$3,000 |  |1,250 |$6,000 |  |2,500 |$8,000
+|21 |  |328 |$3,150 |  |1,313 |$6,300 |  |2,625 |$8,400
+|22 |  |344 |$3,300 |  |1,375 |$6,600 |  |2,750 |$8,800
+|23 |  |359 |$3,450 |  |1,438 |$6,900 |  |2,875 |$9,200
+|24 |  |375 |$3,600 |  |1,500 |$7,200 |  |3,000 |$9,600
+|25 |  |391 |$3,750 |  |1,563 |$7,500 |  |3,125 |$10,000
+|26 |  |406 |$3,900 |  |1,625 |$7,800 |  |3,250 |$10,400
+|27 |  |422 |$4,050 |  |1,688 |$8,100 |  |3,375 |$10,800
+|28 |  |438 |$4,200 |  |1,750 |$8,400 |  |3,500 |$11,200
+|29 |  |453 |$4,350 |  |1,813 |$8,700 |  |3,500 |$11,600
+|30 |  |469 |$4,500 |  |1,875 |$9,000 |  |3,500 |$12,000
+|31 |  |484 |$4,650 |  |1,938 |$9,300 |  |3,500 |$12,400
+|32 |  |500 |$4,800 |  |2,000 |$9,600 |  |3,500 |$12,800
+|33 |  |516 |$4,950 |  |2,063 |$9,900 |  |3,500 |$13,200
+|34 |  |531 |$5,100 |  |2,125 |$10,200 |  |3,500 |$13,600
+|35 |  |547 |$5,250 |  |2,188 |$10,500 |  |3,500 |$14,000
+|36 |  |563 |$5,400 |  |2,250 |$10,800 |  |3,500 |$14,400
+|37 |  |578 |$5,550 |  |2,313 |$11,100 |  |3,500 |$14,800
+|38 |  |594 |$5,700 |  |2,375 |$11,400 |  |3,500 |$15,200
+|39 |  |609 |$5,850 |  |2,438 |$11,700 |  |3,500 |$15,600
+|40 |  |625 |$6,000 |  |2,500 |$12,000 |  |3,500 |$16,000
+|41 |  |641 |$6,150 |  |2,563 |$12,300 |  |3,500 |$16,400
+|42 |  |656 |$6,300 |  |2,625 |$12,600 |  |3,500 |$16,800
+|43 |  |672 |$6,450 |  |2,688 |$12,900 |  |3,500 |$17,200
+|44 |  |688 |$6,600 |  |2,750 |$13,200 |  |3,500 |$17,600
+|45 |  |703 |$6,750 |  |2,813 |$13,500 |  |3,500 |$18,000
+|46 |  |719 |$6,900 |  |2,875 |$13,800 |  |3,500 |$18,400
+|47 |  |734 |$7,050 |  |2,938 |$14,100 |  |3,500 |$18,800
+|48 |  |750 |$7,200 |  |3,000 |$14,400 |  |3,500 |$19,200
+|49 |  |766 |$7,350 |  |3,063 |$14,700 |  |3,500 |$19,600
+|50 |  |781 |$7,500 |  |3,125 |$15,000 |  |3,500 |$20,000
+|51 |  |797 |$7,650 |  |3,188 |$15,300 |  |3,500 |$20,400
+|52 |  |813 |$7,800 |  |3,250 |$15,600 |  |3,500 |$20,800
+|53 |  |828 |$7,950 |  |3,313 |$15,900 |  |3,500 |$21,200
+|54 |  |844 |$8,100 |  |3,375 |$16,200 |  |3,500 |$21,600
+|55 |  |859 |$8,250 |  |3,438 |$16,500 |  |3,500 |$22,000
+|56 |  |875 |$8,400 |  |3,500 |$16,800 |  |3,500 |$22,400
+|57 |  |891 |$8,550 |  |3,500 |$17,100 |  |3,500 |$22,800
+|58 |  |906 |$8,700 |  |3,500 |$17,400 |  |3,500 |$23,200
+|59 |  |922 |$8,850 |  |3,500 |$17,700 |  |3,500 |$23,600
+|60 |  |938 |$9,000 |  |3,500 |$18,000 |  |3,500 |$24,000
+|61 |  |953 |$9,150 |  |3,500 |$18,300 |  |3,500 |$24,400
+|62 |  |969 |$9,300 |  |3,500 |$18,600 |  |3,500 |$24,800
+|63 |  |984 |$9,450 |  |3,500 |$18,900 |  |3,500 |$25,200
+|64 |  |1,000 |$9,600 |  |3,500 |$19,200 |  |3,500 |$25,600
+|65 |  |1,016 |$9,750 |  |3,500 |$19,500 |  |3,500 |$26,000
+|66 |  |1,031 |$9,900 |  |3,500 |$19,800 |  |3,500 |$26,400
+|67 |  |1,047 |$10,050 |  |3,500 |$20,100 |  |3,500 |$26,800
+|68 |  |1,063 |$10,200 |  |3,500 |$20,400 |  |3,500 |$27,200
+|69 |  |1,078 |$10,350 |  |3,500 |$20,700 |  |3,500 |$27,600
+|70 |  |1,094 |$10,500 |  |3,500 |$21,000 |  |3,500 |$28,000
+|71 |  |1,109 |$10,650 |  |3,500 |$21,300 |  |3,500 |$28,400
+|72 |  |1,125 |$10,800 |  |3,500 |$21,600 |  |3,500 |$28,800
+|73 |  |1,141 |$10,950 |  |3,500 |$21,900 |  |3,500 |$29,200
+|74 |  |1,156 |$11,100 |  |3,500 |$22,200 |  |3,500 |$29,600
+|75 |  |1,172 |$11,250 |  |3,500 |$22,500 |  |3,500 |$30,000
+|76 |  |1,188 |$11,400 |  |3,500 |$22,800 |  |3,500 |$30,400
+|77 |  |1,203 |$11,550 |  |3,500 |$23,100 |  |3,500 |$30,800
+|78 |  |1,219 |$11,700 |  |3,500 |$23,400 |  |3,500 |$31,200
+|79 |  |1,234 |$11,850 |  |3,500 |$23,700 |  |3,500 |$31,600
+|80 |  |1,250 |$12,000 |  |3,500 |$24,000 |  |3,500 |$32,000
+|81 |  |1,266 |$12,150 |  |3,500 |$24,300 |  |3,500 |$32,400
+|82 |  |1,281 |$12,300 |  |3,500 |$24,600 |  |3,500 |$32,800
+|83 |  |1,297 |$12,450 |  |3,500 |$24,900 |  |3,500 |$33,200
+|84 |  |1,313 |$12,600 |  |3,500 |$25,200 |  |3,500 |$33,600
+|85 |  |1,328 |$12,750 |  |3,500 |$25,500 |  |3,500 |$34,000
+|86 |  |1,344 |$12,900 |  |3,500 |$25,800 |  |3,500 |$34,400
+|87 |  |1,359 |$13,050 |  |3,500 |$26,100 |  |3,500 |$34,800
+|88 |  |1,375 |$13,200 |  |3,500 |$26,400 |  |3,500 |$35,200
+|89 |  |1,391 |$13,350 |  |3,500 |$26,700 |  |3,500 |$35,600
+|90 |  |1,406 |$13,500 |  |3,500 |$27,000 |  |3,500 |$36,000
+|91 |  |1,422 |$13,650 |  |3,500 |$27,300 |  |3,500 |$36,400
+|92 |  |1,438 |$13,800 |  |3,500 |$27,600 |  |3,500 |$36,800
+|93 |  |1,453 |$13,950 |  |3,500 |$27,900 |  |3,500 |$37,200
+|94 |  |1,469 |$14,100 |  |3,500 |$28,200 |  |3,500 |$37,600
+|95 |  |1,484 |$14,250 |  |3,500 |$28,500 |  |3,500 |$38,000
+|96 |  |1,500 |$14,400 |  |3,500 |$28,800 |  |3,500 |$38,400
+|97 |  |1,516 |$14,550 |  |3,500 |$29,100 |  |3,500 |$38,800
+|98 |  |1,531 |$14,700 |  |3,500 |$29,400 |  |3,500 |$39,200
+|99 |  |1,547 |$14,850 |  |3,500 |$29,700 |  |3,500 |$39,600
+|100 |  |1,563 |$15,000 |  |3,500 |$30,000 |  |3,500 |$40,000
+|========================================================================
+= About NetApp  
+NetApp is the data authority for hybrid cloud. We provide a full range of hybrid cloud data services that simplify management of data across cloud and on-premises environments to accelerate digital transformation. We empower global organizations to unleash the full potential of their data to expand customer touchpoints, foster greater innovation and optimize operations. For more information, visit: www.netapp.com #DataDriven 

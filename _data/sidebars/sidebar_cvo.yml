@@ -14,6 +14,8 @@ entries:
                 url: /../cloud_volumes_service/oracle_perf_in_aws.html
               - title: MySQL Performance and NetApp Cloud Volumes Service (AWS)
                 url: /../cloud_volumes_service/mysql_perf_in_aws.html
+              - title: Get the right value for your money
+                url: /../cloud_volumes_service/cost_cloud_volumes_service.html
       - title: Cloud Volumes ONTAP
         entries:
           - title: Blogs
@@ -38,7 +40,6 @@ entries:
                   - title: NetApp PetaGene Whitepaper
                     url: /../genomics/NetApp_PetaGene_Whitepaper.html
 
-
   - title: Business Applications
     entries:
       - title: Oracle
@@ -60,4 +61,3 @@ entries:
             entries:
               - title: MySQL Performance and NetApp Cloud Volumes Service (AWS)
                 url:  /../mysql/mysql_perf_in_aws.html
-
